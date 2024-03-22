@@ -1,0 +1,1 @@
+cp -R ./* /Applications/MAMP/htdocs/wordpress/wp-content/plugins/casso-tu-dong-xac-nhan-thanh-toan-chuyen-khoan-ngan-hang

@@ -1,8 +1,7 @@
 <section id="slider">
     <div class="sliderMain">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-            <div class="swiper-wrapper" id="swiper-wrapper-f5b772b13525ecb4" aria-live="polite"
-            >
+            <div class="swiper-wrapper">
                 <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
                      role="group" aria-label="1 / 6">
                     <div class="sliderMainItem">

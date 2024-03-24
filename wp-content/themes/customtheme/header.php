@@ -52,11 +52,12 @@
                             $walker = new Bootstrap_Nav_Walker;
                             wp_nav_menu(
                                 array(
+
                                     'items_wrap'      => '<ul class="sliderMenu">%3$s</ul>',
                                     'fallback_cb'     => false,
-                                    'container' => null,
-                                    'start_depth' => 1,
-                                    'walker' => $walker
+                                    'container'       => null,
+                                    'start_depth'     => 1,
+                                    'walker'          => $walker
                                 )
                             );
                             ?>

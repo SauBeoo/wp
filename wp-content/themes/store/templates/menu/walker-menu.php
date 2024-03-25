@@ -13,6 +13,7 @@ if( !function_exists('store_menu')){
         wp_nav_menu($menu);
     }
 };
+
 class Bootstrap_Nav_Walker extends Walker_Nav_Menu
 {
     // Modify the start_lvl function to add Bootstrap dropdown classes

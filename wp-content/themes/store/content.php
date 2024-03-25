@@ -4,6 +4,5 @@
 </div>
     <div class="entry-header">
         <?php store_entry_header();?>
-        <?php twenty_twenty_one_entry_meta_footer();?>
     </div>
 </article>

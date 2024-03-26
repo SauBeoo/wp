@@ -2,8 +2,7 @@
     <div class="sliderMain">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
             <div class="swiper-wrapper">
-                <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
-                     role="group" aria-label="1 / 6">
+                <div class="swiper-slide">
                     <div class="sliderMainItem">
                         <a href="https://lamluy.vn/collections/bra-quay" title="BST Khoe Sắc "
                            aria-label="Banner 5">
@@ -21,7 +20,7 @@
                 </div>
 
 
-                <div class="swiper-slide swiper-slide-duplicate-next" role="group" aria-label="2 / 6">
+                <div class="swiper-slide">
                     <div class="sliderMainItem">
                         <a href="https://lamluy.vn/collections/bst-canh-xuan" title="" aria-label="Banner 1">
                             <picture>
@@ -38,7 +37,7 @@
                 </div>
 
 
-                <div class="swiper-slide" role="group" aria-label="3 / 6">
+                <div class="swiper-slide">
                     <div class="sliderMainItem">
                         <a href="https://lamluy.vn/collections/bra-nang-nguc" title="Bra Nâng ngực "
                            aria-label="Banner 3">
@@ -56,8 +55,7 @@
                 </div>
 
 
-                <div class="swiper-slide swiper-slide-prev" role="group"
-                     aria-label="4 / 6">
+                <div class="swiper-slide">
                     <div class="sliderMainItem">
                         <a href="https://lamluy.vn/collections/quan-thong-ren" title="Combo quần thong ren "
                            aria-label="Banner 4">
@@ -75,7 +73,7 @@
                 </div>
 
 
-                <div class="swiper-slide swiper-slide-active" role="group" aria-label="5 / 6">
+                <div class="swiper-slide">
                     <div class="sliderMainItem">
                         <a href="https://lamluy.vn/collections/bra-quay" title="BST Khoe Sắc "
                            aria-label="Banner 5">
@@ -92,7 +90,7 @@
                     </div>
                 </div>
 
-                <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" role="group" aria-label="6 / 6">
+                <div class="swiper-slide">
                     <div class="sliderMainItem">
                         <a href="https://lamluy.vn/collections/bst-canh-xuan" title="" aria-label="Banner 1">
                             <picture>
@@ -108,19 +106,15 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
-                 aria-controls="swiper-wrapper-f5b772b13525ecb4"></div>
-            <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"
-                 aria-controls="swiper-wrapper-f5b772b13525ecb4"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
             <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
-            ><span class="swiper-pagination-bullet" tabindex="0" role="button"
-                   aria-label="Go to slide "></span><span class="swiper-pagination-bullet"
-                                                          tabindex="0" role="button"
-                                                          aria-label="Go to slide "></span><span
-                        class="swiper-pagination-bullet" tabindex="0" role="button"
-                        aria-label="Go to slide "></span><span
-                        class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
-                        aria-label="Go to slide "></span></div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            ><span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+            </div>
+            <span class="swiper-notification" ></span>
+        </div>
     </div>
 </section>

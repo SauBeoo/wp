@@ -89,8 +89,9 @@ if( !function_exists('store_theme_setup')){
                 [],
                 wp_get_theme()->get( 'Version' )
             );
+            
             // Enqueue custom.js
-//    wp_enqueue_script( 'my-theme-script', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), '1.0.0', true );
+            wp_enqueue_script( 'my-theme-script', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '1.0.0', true );
         }
         add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_scripts' );
     }

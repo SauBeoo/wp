@@ -163,6 +163,7 @@ F1GEN.Global = {
         if($(window).width() > 768 ){
             $('body').on('click','.headerUser a',function(){
                 if(window.F1GEN_vars.account.logged == false ){
+                    console.log(2323232);
                     $('#accountModal').modal('show');
                 }else{
                     window.location.href = "/account";

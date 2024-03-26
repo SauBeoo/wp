@@ -5,11 +5,11 @@
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php   bloginfo('pingback_url'); ?>" >
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="//theme.hstatic.net/200000272403/1000697133/14/f1-js-plugin.js?v=398"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         try{
@@ -120,7 +120,7 @@
     </script>
     <?php wp_head(); ?>
 </head>
-<body<?php body_class();  ?>>
+<body id="lamluy" <?php body_class();  ?>>
 <header id="header" class="">
     <div class="headerMain">
         <div class="container-fluid">

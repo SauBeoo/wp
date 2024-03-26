@@ -91,12 +91,18 @@ if( !function_exists('store_theme_setup')){
             );
             
             // Enqueue custom.js
+            wp_enqueue_script( 'my-theme-script-f1', get_template_directory_uri() . '/assets/js/f1-js-plugin.js', array( 'jquery' ), '1.0.0', true );
             wp_enqueue_script( 'my-theme-script', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '1.0.0', true );
         }
         add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_scripts' );
     }
     add_action('init', 'store_theme_setup');
 
+    function ti_custom_javascript() {
+        wp_enqueue_script( 'example-script', get_template_directory_uri() . '/js/examplescript.js');
+    }
+    add_action('wp_enqueue_scripts', 'ti_custom_javascript');
+    
     function webkul_add_woocommerce_support() {
         //Add WoocCommerce theme support to our theme
         add_theme_support( 'woocommerce');

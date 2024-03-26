@@ -5,12 +5,12 @@
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php   bloginfo('pingback_url'); ?>" >
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
     <!-- Latest compiled JavaScript -->
-    <script src="//theme.hstatic.net/200000272403/1000697133/14/f1-js-plugin.js?v=398"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="http://localhost/store/wp-content/themes/store/assets/js/f1-js-plugin.js?ver=1.0.0"></script>
+
     <script>
         try{
             var salePopupData = {
@@ -25,9 +25,6 @@
 
             salePopupData.o.push("nhan-ban-tu-ao-thun-elix");
 
-
-
-
             salePopupData.u.push("Bích Thủy ở Quảng Bình");
 
             salePopupData.u.push("Quang Hải ở Nghệ An");
@@ -37,7 +34,6 @@
             salePopupData.u.push("Trọng Nghĩa ở Ninh Thuận");
 
             salePopupData.u.push("Văn Trọng ở TP.Hồ Chí Minh");
-
 
 
             salePopupData.a.push("Cách đây 30 phút");

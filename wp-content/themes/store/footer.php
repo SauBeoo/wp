@@ -1,9 +1,9 @@
 <footer id="footer">
-    <div class="container" bis_skin_checked="1">
-        <div class="footerMain" bis_skin_checked="1">
-            <div class="row" bis_skin_checked="1">
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12" bis_skin_checked="1">
-                    <div class="footerMainAddress" bis_skin_checked="1">
+    <div class="container" >
+        <div class="footerMain" >
+            <div class="row" >
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12" >
+                    <div class="footerMainAddress" >
                         <h4>
                             Công ty TNHH Luy Design. MST: 0315649983
                         </h4>
@@ -23,7 +23,7 @@
                             </li>
                         </ul>
 
-                        <div class="logo-footer" bis_skin_checked="1">
+                        <div class="logo-footer" >
                             <a href="http://online.gov.vn/Home/WebDetails/54929">
                                 <img alt="Bộ Công Thương"
                                      src="https://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoSaleNoti.png">
@@ -36,12 +36,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 col-sm-12 col-12" bis_skin_checked="1">
-                    <div class="footerMainList menuclickmb" bis_skin_checked="1">
+                <div class="col-lg-2 col-md-6 col-sm-12 col-12" >
+                    <div class="footerMainList menuclickmb" >
                         <h4>
                             Chính sách
                         </h4>
-                        <div class="FooterMainListToggle" bis_skin_checked="1">
+                        <div class="FooterMainListToggle" >
                             <ul>
 
                                 <li class="item">
@@ -75,12 +75,12 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-md-6 col-sm-12 col-12" bis_skin_checked="1">
-                    <div class="footerMainList  menuclickmb" bis_skin_checked="1">
+                <div class="col-lg-2 col-md-6 col-sm-12 col-12" >
+                    <div class="footerMainList  menuclickmb" >
                         <h4>
                             Thông tin
                         </h4>
-                        <div class="FooterMainListToggle" bis_skin_checked="1">
+                        <div class="FooterMainListToggle" >
                             <ul>
 
                                 <li class="item">
@@ -116,7 +116,7 @@
     <div class="footerBottom" >
         <div class="container" >
             <div class="row" >
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12" bis_skin_checked="1">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12" >
                     <p>© 2024 - All rights reserved by Hacker Lor</p>
                 </div>
 
@@ -125,148 +125,6 @@
     </div>
 </footer>
 <?php wp_footer();?>
-<div class="modal fade show" id="accountModal" tabindex="-1" aria-labelledby="accountModal" style="display: none;" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3">
-                        <div class="modalLogo">
-
-
-                            <a href="https://lamluy.vn">
-                                <img src="https://file.hstatic.net/200000272403/file/wwebsitelogo_300x83px_948745d6afd84a86a4429fb9be236b28.jpg" alt="Lamluy" class="img-fluid logoimg">
-                            </a>
-
-
-                        </div>
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active" id="modalLoginTab" data-toggle="pill" href="#modalLogin" role="tab" aria-controls="modalLogin" aria-selected="true">Đăng nhập</a>
-                            <a class="nav-link" id="modalForgetTab" data-toggle="pill" href="#modalForget" role="tab" aria-controls="modalForget" aria-selected="false">Quên mật khẩu</a>
-                            <a class="nav-link" id="modalRegisterTab" data-toggle="pill" href="#modalRegister" role="tab" aria-controls="modalRegister" aria-selected="false">Đăng ký</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="modalLogin" role="tabpanel" aria-labelledby="modalLoginTab">
-                                <h5 class="text-center">
-                                    ĐĂNG NHẬP
-                                </h5>
-                                <div class="login-form-body">
-
-
-                                    <form accept-charset="UTF-8" action="/account/login" id="customer_login" method="post">
-                                        <input name="form_type" type="hidden" value="customer_login">
-                                        <input name="utf8" type="hidden" value="✓">
-
-
-                                        <div class="form-group">
-                                            <label for="login-email">Email*</label>
-                                            <input type="email" id="login-email" class="form-control" name="customer[email]" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="login-password">Mật khẩu*</label>
-                                            <input type="password" id="login-password" class="form-control" name="customer[password]" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">
-                                                ĐĂNG NHẬP
-                                            </button>
-                                        </div>
-
-                                        <input id="d8e0b0cb496644ebbc1ee3083627a590" name="g-recaptcha-response" type="hidden" value="03AFcWeA7Yna27fXFe8RIcJbOZC8UOyvwRh0-C2-GBsvFD6FQgS1MvrjTzRG3DgvIraDZAMU9jyAthDAbHVbYyXwiJ4OolCamEkZfclQMMC9gHw9ykBjVUroUuSzDc4GBaX58rZpzM8xfdDqmMzjUyuoxhP_addrPYMEnwge2ESH_rvQOxkp3136h7I7N0ZH0B8lQNKBgdiXwWnNTuPcUGf1RrvzeqKQzFrjTdD9kjhS-1AFqvOghKZAJyVIJWSRSnuQoWd5s_buGL1BmtNh7kxvqXOpCSYv2eMt__JBQ8ASo7-QNFpV8tDFz3HHsUcPahLJde88I4KvkSBstipelfuZfv3FIrdr7AXUaPRuMfZTEsJQwYfCZ7zRVbNHXxBzXWa97f1MhhmesK1RrnfaHutDNhvNtzOnn6t6sRnbwa1HYNHPDdzqgZKswsE6pVQN4kS1ie-dQqOoKUAghqqgk6v9A3zbnL6u4LGXzZxBaJq8e1kRdPxvEMm8zJ239AuJskXAwJG4oXsby2o-t65cCrrChBu0mc4kH5Yea2wLlClLs64vSRsQ4GfjuCW6iaM7Ywu_uj9JWa8W3ltYWoGWEWVRZJh-36dw-vXhVFdsmmK25UOV_VNpEaFLEZnkoQa3XMpOv-42SLfOw81FBX7B9JNK8tgF6iE2zb_A"><noscript data-src="https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></noscript><noscript>grecaptcha.ready(function() {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action: 'submit'}).then(function(token) {document.getElementById('d8e0b0cb496644ebbc1ee3083627a590').value = token;});});</noscript></form>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="modalForget" role="tabpanel" aria-labelledby="modalForgetTab">
-                                <h5 class="text-center">
-                                    QUÊN MẬT KHẨU
-                                </h5>
-                                <div class="recover-form-body">
-
-
-                                    <form accept-charset="UTF-8" action="/account/recover" method="post">
-                                        <input name="form_type" type="hidden" value="recover_customer_password">
-                                        <input name="utf8" type="hidden" value="✓">
-
-
-                                        <div class="form-group">
-                                            <label for="recover-email">Email*</label>
-                                            <input type="email" id="recover-email" class="form-control" name="email" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">
-                                                Gửi
-                                            </button>
-                                        </div>
-
-                                        <input id="882e71e875b24b74b6383f79020ec9d2" name="g-recaptcha-response" type="hidden" value="03AFcWeA5r3NvRl0mNEBQIakbs8_eO3O6pjHlLiYAb3bRiPmzDh9R-mZbwTaIIBdOOE01UEinjfLfpVLOP9jGSWuNvH2acc9RZelVgWTXMzojVPqGNk0GTPhhqgqvV6MaXm8rDdfJM-akoOTpX9RgVEf12h946w7cWebWcuaqn6W4FHsl5mFYlWDbWKdrDydWAEp8nvTdXVimj6TCAX3HbnKkM84CE2hqtmGka37enP-lXyRuVqDZsyOqheWNoDMdWiKSwMr1k8kb_em3JkJGO7Po1kiW72uOcOEPQLKkLIkDReCo5F_i44JlW0iqE_ih_98w8Ji3LKZNNWmh-dbDHnG_L28UMARMGDlBARjZIk-f3LwnFw--bU3Uhc-8cEB8ujwExknjN3OqGONgRpmL_Plx6M_2LKiLZ_tH3Kfm9KDOj7kczcIF7Pp40ax9D1kZVB584WjCbZi6pMOB1GybgCTDFKCZej4XM1BAgfP0JU2q6typ-oBOW8SDneE3UrN1F9_L104uFWNO5bRHIb_yAa6Ky0U87NGA7FHHsHKSFywqzTMZS7EdlwgZaMDtuf6PFBFyd7q1hrLmbBTomAnbqukHFaWVYSSj1CsReQFA3BGDJ4R94EZ9Qq1suxG3ybNkzwEBG0sp5i2hQPgDYC-BX6EtYorYi369knQ"><noscript data-src="https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></noscript><noscript>grecaptcha.ready(function() {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action: 'submit'}).then(function(token) {document.getElementById('882e71e875b24b74b6383f79020ec9d2').value = token;});});</noscript></form>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="modalRegister" role="tabpanel" aria-labelledby="modalRegisterTab">
-                                <h5 class="text-center">
-                                    ĐĂNG KÝ
-                                </h5>
-                                <div class="register-form-body">
-
-
-                                    <form accept-charset="UTF-8" action="/account" id="create_customer" method="post">
-                                        <input name="form_type" type="hidden" value="create_customer">
-                                        <input name="utf8" type="hidden" value="✓">
-
-
-                                        <div class="form-group">
-                                            <label for="register-last-name">Họ của bạn*</label>
-                                            <input type="text" id="register-last-name" class="form-control" name="customer[last_name]" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="register-first-name">Tên của bạn*</label>
-                                            <input type="text" id="register-first-name" class="form-control" name="customer[first_name]" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="register-phone">Số điện thoại</label>
-                                            <input type="text" id="register-phone" class="form-control" name="customer[phone]" pattern="^\+?\d{0,10}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Giới tính</label>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <input type="radio" id="register-gender-0" value="0" name="customer[gender]" checked="">
-                                                    <label for="register-gender-0">Nữ</label>
-                                                </div>
-                                                <div class="col-2">
-                                                    <input type="radio" id="register-gender-1" value="1" name="customer[gender]">
-                                                    <label for="register-gender-1">Nam</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="register-email">Email*</label>
-                                            <input type="email" id="register-email" class="form-control" name="customer[email]" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="register-password">Mật khẩu*</label>
-                                            <input type="password" id="register-password" class="form-control" name="customer[password]" required="">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">
-                                                ĐĂNG KÝ
-                                            </button>
-                                        </div>
-
-                                        <input id="8c280c41df9a43d8a95e9d8591e8b3ec" name="g-recaptcha-response" type="hidden" value="HFdW1rZhRNFG5hXl1eW0dPWgAoDCRqdyoqfAtyNQ0ZD2wXLDcpIn42FhNyMTZCflwuaBIOHEIDER4RIRREYx4vayFIKGocA2B4C0ogIE5XbFFLTTlzT2cKdhMDEh4PBm8PDy5oaGpgWXIldjlOEG93e2p-Lj0_cW9VXUpjcRMqBBg"><noscript data-src="https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></noscript><noscript>grecaptcha.ready(function() {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action: 'submit'}).then(function(token) {document.getElementById('8c280c41df9a43d8a95e9d8591e8b3ec').value = token;});});</noscript></form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="javascript:void(0);" class="closeModal"><i class="lni lni-close"></i></a>
-        </div>
-    </div>
-</div>
 <div id="sidebarAll" >
     <div class="sidebarAllMainCart" style="display: block;">
         <div class="sidebarAllHeader">
@@ -1015,6 +873,266 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="quickviewModal"  style="display: none;" >
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" >
+        <div class="modal-content" >
+            <div class="modal-body" style="opacity: 1;">
+                <div class="productWrapQW" >
+                    <div class="container" >
+                        <div class="row" >
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12" >
+                                <div class="productWrapImageQW" >
+                                    <div class="featureImageQW swiper-container swiper-container-initialized swiper-container-horizontal" >
+                                        <div class="swiper-wrapper"  >
+                                            <div class="thumbImageItemQW">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div><div class="thumbImageItemQW swiper-slide " >
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div><div class="thumbImageItemQW swiper-slide">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div><div class="thumbImageItemQW swiper-slide">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div><div class="thumbImageItemQW swiper-slide">
+                                                <picture>
+                                                    <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_grande.png">
+                                                    <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_1024x1024.png">
+                                                    <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_1024x1024.png" alt=" Bralette Cánh Tím Dịu Dàng ">
+                                                </picture>
+                                            </div></div>
+                                        <span class="swiper-notification"></span></div>
+                                    <div class="thumbImageQW swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-thumbs" >
+                                        <div class="thumbImageContainerQW swiper-wrapper" >
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div><div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div><div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div>
+
+                                            <div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div><div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div><div class="thumbImageItemQW swiper-slide">
+                                                <div data-zoom="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_master.png" >
+                                                    <picture>
+                                                        <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png">
+                                                        <source media="(min-width: 481px)" srcset="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png">
+                                                        <img class="img-fluid" src="//product.hstatic.net/200000272403/product/84_c1395853584a44ce94d3078a900c535d_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
+                                                    </picture>
+                                                </div>
+                                            </div></div>
+                                        <span class="swiper-notification"></span></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12" >
+                                <div class="productWrapDetailQW" >
+                                    <!--<div class="checkProduct productAvailable">Còn hàng</div>-->
+                                    <h1 class="productTitleQW">Bralette Cánh Tím Dịu Dàng</h1>
+                                    <div class="productPriceQW" >
+                                        <div class="productPriceBoxQW" >
+                                            <span class="productPriceMainQW">295,000₫</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="productInfoMainQW" >
+
+                                        <div class="productSkuQW" ><span>Mã sản phẩm: </span>ABACTAS</div>
+
+                                        <div class="productVendorQW" >
+                                            <span>Thương hiệu: </span> Lamluy
+                                        </div>
+                                        <div class="productCollectionQW" >
+                                            <span>Nhóm sản phẩm: </span>
+
+                                            Bst Cánh Xuân,
+
+                                            BRALETTE
+
+                                        </div>
+                                    </div>
+                                    <div class="selector-wrapper" >
+                                        <select class="single-option-selector" data-option="option1" id="productSelectQW-option-0">
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                        </select></div>
+                                    <select id="productSelectQW" name="id" style="display: none;">
+
+                                        <option value="1117836747">S - 295,000₫</option>
+
+                                        <option value="1117836748">M - 295,000₫</option>
+
+                                        <option value="1117836749">L - 295,000₫</option>
+                                    </select>
+                                    <div class="product-swatchQW" >
+                                        <div class="product-sw-lineQW" >
+                                            <div class="product-sw-titleQW" >
+                                                Kích thước
+                                            </div>
+                                            <div class="product-sw-selectQW">
+                                                <span class="product-sw-select-itemQW">
+                                                    <input type="radio" data-value="S" name="product-choose-kich-thuocQW" data-name="option1" value="S"
+                                                           class="trigger-option-swQW d-none" id="product-choose-kich-thuoc-1QW">
+                                                    <label for="product-choose-kich-thuoc-1QW" class="product-sw-select-item-spanQW">S</label>
+                                                </span>
+                                                <span class="product-sw-select-itemQW">
+                                                    <input type="radio" data-value="M" name="product-choose-kich-thuocQW" data-name="option1" value="M"
+                                                           class="trigger-option-swQW d-none" id="product-choose-kich-thuoc-2QW">
+                                                    <label for="product-choose-kich-thuoc-2QW" class="product-sw-select-item-spanQW">M</label>
+                                                </span>
+                                                <span class="product-sw-select-itemQW">
+                                                    <input type="radio" data-value="L" name="product-choose-kich-thuocQW" data-name="option1" value="L"
+                                                           class="trigger-option-swQW d-none" id="product-choose-kich-thuoc-3QW">
+                                                    <label for="product-choose-kich-thuoc-3QW" class="product-sw-select-item-spanQW">L</label>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="productActionMainQW" >
+                                        <div class="quantityAreaQW" >
+                                            <button class="qtyBtn minusQuanQW" data-type="minus">-</button>
+                                            <input type="number" id="quantityQW" name="quantity" value="1" min="1" class="quantitySelector">
+                                            <button class="qtyBtn plusQuanQW" data-type="plus">+</button>
+                                        </div>
+                                        <div class="productActionQW" >
+                                            <button type="button" id="addToCartQW">Thêm vào giỏ hàng</button>
+                                            <button type="button" id="buyNowQW">
+                                                Mua ngay
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="productSharingQW" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+            <a href="javascript:void(0);" class="closeModal"><i class="lni lni-close"></i></a>
+            <div class="loadingWrapper" >
+                <div class="loadingNew" ></div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="overplayAll "></div>
+<?php
+    get_template_part( 'template-parts/modal/modal-form-user' );
+    get_template_part( 'template-parts/modal/alert-error' );
+    get_template_part( 'template-parts/modal/back-to-top' );
+?>
+
+
 </body>
 </html>

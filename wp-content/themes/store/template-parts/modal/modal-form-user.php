@@ -27,21 +27,17 @@
                                     ĐĂNG NHẬP
                                 </h5>
                                 <div class="login-form-body">
-                                    <form accept-charset="UTF-8" action="/account/login" id="customer_login"
+                                    <form accept-charset="UTF-8" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" id="customer_login"
                                           method="post">
-                                        <input name="form_type" type="hidden" value="customer_login">
-                                        <input name="utf8" type="hidden" value="✓">
-
-
                                         <div class="form-group">
                                             <label for="login-email">Email*</label>
-                                            <input type="email" id="login-email" class="form-control"
-                                                   name="customer[email]" required="">
+                                            <input type="text" id="login-email" class="form-control"
+                                                   name="log" required="">
                                         </div>
                                         <div class="form-group">
                                             <label for="login-password">Mật khẩu*</label>
                                             <input type="password" id="login-password" class="form-control"
-                                                   name="customer[password]" required="">
+                                                   name="pwd" required="">
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">
@@ -49,18 +45,18 @@
                                             </button>
                                         </div>
 
-                                        <input id="d8e0b0cb496644ebbc1ee3083627a590" name="g-recaptcha-response"
-                                               type="hidden"
-                                               value="03AFcWeA7Yna27fXFe8RIcJbOZC8UOyvwRh0-C2-GBsvFD6FQgS1MvrjTzRG3DgvIraDZAMU9jyAthDAbHVbYyXwiJ4OolCamEkZfclQMMC9gHw9ykBjVUroUuSzDc4GBaX58rZpzM8xfdDqmMzjUyuoxhP_addrPYMEnwge2ESH_rvQOxkp3136h7I7N0ZH0B8lQNKBgdiXwWnNTuPcUGf1RrvzeqKQzFrjTdD9kjhS-1AFqvOghKZAJyVIJWSRSnuQoWd5s_buGL1BmtNh7kxvqXOpCSYv2eMt__JBQ8ASo7-QNFpV8tDFz3HHsUcPahLJde88I4KvkSBstipelfuZfv3FIrdr7AXUaPRuMfZTEsJQwYfCZ7zRVbNHXxBzXWa97f1MhhmesK1RrnfaHutDNhvNtzOnn6t6sRnbwa1HYNHPDdzqgZKswsE6pVQN4kS1ie-dQqOoKUAghqqgk6v9A3zbnL6u4LGXzZxBaJq8e1kRdPxvEMm8zJ239AuJskXAwJG4oXsby2o-t65cCrrChBu0mc4kH5Yea2wLlClLs64vSRsQ4GfjuCW6iaM7Ywu_uj9JWa8W3ltYWoGWEWVRZJh-36dw-vXhVFdsmmK25UOV_VNpEaFLEZnkoQa3XMpOv-42SLfOw81FBX7B9JNK8tgF6iE2zb_A">
-                                        <noscript
-                                                data-src="https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></noscript>
-                                        <noscript>
-                                            grecaptcha.ready(function()
-                                            {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action:
-                                            'submit'}).then(function(token)
-                                            {document.getElementById('d8e0b0cb496644ebbc1ee3083627a590').value =
-                                            token;});});
-                                        </noscript>
+<!--                                        <input id="d8e0b0cb496644ebbc1ee3083627a590" name="g-recaptcha-response"-->
+<!--                                               type="hidden"-->
+<!--                                               value="03AFcWeA7Yna27fXFe8RIcJbOZC8UOyvwRh0-C2-GBsvFD6FQgS1MvrjTzRG3DgvIraDZAMU9jyAthDAbHVbYyXwiJ4OolCamEkZfclQMMC9gHw9ykBjVUroUuSzDc4GBaX58rZpzM8xfdDqmMzjUyuoxhP_addrPYMEnwge2ESH_rvQOxkp3136h7I7N0ZH0B8lQNKBgdiXwWnNTuPcUGf1RrvzeqKQzFrjTdD9kjhS-1AFqvOghKZAJyVIJWSRSnuQoWd5s_buGL1BmtNh7kxvqXOpCSYv2eMt__JBQ8ASo7-QNFpV8tDFz3HHsUcPahLJde88I4KvkSBstipelfuZfv3FIrdr7AXUaPRuMfZTEsJQwYfCZ7zRVbNHXxBzXWa97f1MhhmesK1RrnfaHutDNhvNtzOnn6t6sRnbwa1HYNHPDdzqgZKswsE6pVQN4kS1ie-dQqOoKUAghqqgk6v9A3zbnL6u4LGXzZxBaJq8e1kRdPxvEMm8zJ239AuJskXAwJG4oXsby2o-t65cCrrChBu0mc4kH5Yea2wLlClLs64vSRsQ4GfjuCW6iaM7Ywu_uj9JWa8W3ltYWoGWEWVRZJh-36dw-vXhVFdsmmK25UOV_VNpEaFLEZnkoQa3XMpOv-42SLfOw81FBX7B9JNK8tgF6iE2zb_A">-->
+<!--                                        <noscript-->
+<!--                                                data-src="https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></noscript>-->
+<!--                                        <noscript>-->
+<!--                                            grecaptcha.ready(function()-->
+<!--                                            {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action:-->
+<!--                                            'submit'}).then(function(token)-->
+<!--                                            {document.getElementById('d8e0b0cb496644ebbc1ee3083627a590').value =-->
+<!--                                            token;});});-->
+<!--                                        </noscript>-->
                                     </form>
 
                                 </div>

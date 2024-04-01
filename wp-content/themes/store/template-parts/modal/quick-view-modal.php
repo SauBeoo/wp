@@ -89,7 +89,8 @@
                                                         <img class="img-fluid" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_medium.png" alt="Bralette Cánh Tím Dịu Dàng">
                                                     </picture>
                                                 </div>
-                                            </div><div class="thumbImageItemQW swiper-slide">
+                                            </div>
+                                            <div class="thumbImageItemQW swiper-slide">
                                                 <div data-zoom="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_master.png" >
                                                     <picture>
                                                         <source media="(max-width: 480px)" srcset="//product.hstatic.net/200000272403/product/86_4c5b77f603f642518955862483fb9f2d_medium.png">
@@ -176,19 +177,14 @@
                                         </div>
                                     </div>
                                     <div class="productInfoMainQW" >
-
                                         <div class="productSkuQW" ><span>Mã sản phẩm: </span>ABACTAS</div>
-
                                         <div class="productVendorQW" >
                                             <span>Thương hiệu: </span> Lamluy
                                         </div>
                                         <div class="productCollectionQW" >
                                             <span>Nhóm sản phẩm: </span>
-
                                             Bst Cánh Xuân,
-
                                             BRALETTE
-
                                         </div>
                                     </div>
                                     <div class="selector-wrapper" >
@@ -198,11 +194,8 @@
                                             <option value="L">L</option>
                                         </select></div>
                                     <select id="productSelectQW" name="id" style="display: none;">
-
                                         <option value="1117836747">S - 295,000₫</option>
-
                                         <option value="1117836748">M - 295,000₫</option>
-
                                         <option value="1117836749">L - 295,000₫</option>
                                     </select>
                                     <div class="product-swatchQW" >

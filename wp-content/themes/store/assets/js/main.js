@@ -234,47 +234,47 @@ F1GEN.Sidebar = {
     },
     getCartSidebar:function(){
         setTimeout(function(){
-            $.get('/cart.js', function(res){
-                let item = '';
-                $.each(res.items, function(index, value){
-                    let flagLengthOption = value.variant_options.length - 1;
-                    let flagVariant = '';
-                    $.each(value.variant_options, function(key, val){
-                        if(key === flagLengthOption){
-                            flagVariant += `<span>${val}</span>`;
-                        }else{
-                            flagVariant += `<span>${val}&nbsp;/&nbsp;</span>`;
-                        }
-                    })
-                    item += `
-                        <div class="itemMain" data-id="${value.variant_id}">
-                        <a href="${value.url}"><img class="itemImage img-fluid" src="${value.image}"/></a>
-                        <div class="itemInfo">
-                        <a class="itemTitle" href="${value.url}">${value.title}</a>
-                        <div class="itemVariant">${flagVariant}</div>
-                        <div class="itemPriceInfo">
-                        <span class="itemPriceMain">${Haravan.formatMoney(value.price, window.F1GEN_vars.formatMoney)}</span>
-                        <span class="itemPriceCompare"><del>${value.line_price > value.price ? Haravan.formatMoney(value.line_price, window.F1GEN_vars.formatMoney) : ''}</del></span>
-                        </div>
-                        <div class="itemAction">
-                        <div class="itemQuantity">
-                        <button class="qtyBtn minusQuan" data-type="minus">-</button>
-                        <input type="number" id="itemQuantityCart" name="quantity" value="${value.quantity}" min="1" class="quantitySelector">
-                        <button class="qtyBtn plusQuan" data-type="plus">+</button>
-                        </div>
-                        <div class="removeItem">
-                        <i class="lni lni-trash"></i>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        `;
-                });
-                $('.sidebarAllMainCart .sidebarAllBody').html('');
-                $('.sidebarAllMainCart .totalPrice span').last().html(Haravan.formatMoney(res.total_price, window.F1GEN_vars.formatMoney))
-                $('.headerCart .sidebarAllMainCartCount').html(res.item_count)
-                $('.sidebarAllMainCart .sidebarAllBody').html(item);
-            });
+            // $.get('/cart.js', function(res){
+            //     let item = '';
+            //     $.each(res.items, function(index, value){
+            //         let flagLengthOption = value.variant_options.length - 1;
+            //         let flagVariant = '';
+            //         $.each(value.variant_options, function(key, val){
+            //             if(key === flagLengthOption){
+            //                 flagVariant += `<span>${val}</span>`;
+            //             }else{
+            //                 flagVariant += `<span>${val}&nbsp;/&nbsp;</span>`;
+            //             }
+            //         })
+            //         item += `
+            //             <div class="itemMain" data-id="${value.variant_id}">
+            //             <a href="${value.url}"><img class="itemImage img-fluid" src="${value.image}"/></a>
+            //             <div class="itemInfo">
+            //             <a class="itemTitle" href="${value.url}">${value.title}</a>
+            //             <div class="itemVariant">${flagVariant}</div>
+            //             <div class="itemPriceInfo">
+            //             <span class="itemPriceMain">${Haravan.formatMoney(value.price, window.F1GEN_vars.formatMoney)}</span>
+            //             <span class="itemPriceCompare"><del>${value.line_price > value.price ? Haravan.formatMoney(value.line_price, window.F1GEN_vars.formatMoney) : ''}</del></span>
+            //             </div>
+            //             <div class="itemAction">
+            //             <div class="itemQuantity">
+            //             <button class="qtyBtn minusQuan" data-type="minus">-</button>
+            //             <input type="number" id="itemQuantityCart" name="quantity" value="${value.quantity}" min="1" class="quantitySelector">
+            //             <button class="qtyBtn plusQuan" data-type="plus">+</button>
+            //             </div>
+            //             <div class="removeItem">
+            //             <i class="lni lni-trash"></i>
+            //             </div>
+            //             </div>
+            //             </div>
+            //             </div>
+            //             `;
+            //     });
+            //     $('.sidebarAllMainCart .sidebarAllBody').html('');
+            //     $('.sidebarAllMainCart .totalPrice span').last().html(Haravan.formatMoney(res.total_price, window.F1GEN_vars.formatMoney))
+            //     $('.headerCart .sidebarAllMainCartCount').html(res.item_count)
+            //     $('.sidebarAllMainCart .sidebarAllBody').html(item);
+            // });
         },0)
     },
     changeQuantitySidebar:function(){
@@ -1664,17 +1664,17 @@ F1GEN.Carts = {
                 $('.invoice-block-body').slideUp(300);
             }
         })
-        $.ajax({
-            type: 'GET',
-            url: '/cart.js',
-            dataType: 'json',
-            success: function(res){
-                window.cart_attr  = res.attributes;
-                if(typeof res.attributes.company_name !== 'undefined' && res.attributes.company_name.length > 0){
-                    $('#invoice-export').trigger('click');
-                }
-            }
-        })
+        // $.ajax({
+        //     type: 'GET',
+        //     url: '/cart.js',
+        //     dataType: 'json',
+        //     success: function(res){
+        //         window.cart_attr  = res.attributes;
+        //         if(typeof res.attributes.company_name !== 'undefined' && res.attributes.company_name.length > 0){
+        //             $('#invoice-export').trigger('click');
+        //         }
+        //     }
+        // })
     },
     invoiceHandle: function(){
         $('.invoice-block-body .text-danger').remove();
@@ -2047,4 +2047,3 @@ F1GEN.Quickview = {
     },
 };
 F1GEN.Global.init();
-

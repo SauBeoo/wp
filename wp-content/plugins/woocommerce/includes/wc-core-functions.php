@@ -242,7 +242,7 @@ function wc_get_path_define_tokens() {
 function wc_get_template_part( $slug, $name = '' ) {
 	$cache_key = sanitize_key( implode( '-', array( 'template-part', $slug, $name, Constants::get_constant( 'WC_VERSION' ) ) ) );
 	$template  = (string) wp_cache_get( $cache_key, 'woocommerce' );
-
+    
 	if ( ! $template ) {
 		if ( $name ) {
 			$template = WC_TEMPLATE_DEBUG_MODE ? '' : locate_template(

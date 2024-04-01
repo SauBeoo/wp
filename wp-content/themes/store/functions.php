@@ -55,7 +55,11 @@ if( !function_exists('store_theme_setup')){
             'default-color' => '#e8e8e8'
         );
         add_theme_support('custom-background', $default_background);
+        /* Them menu */
+        register_nav_menu('primary-menu', __('Primary Menu', 'store'));
+        
         add_theme_support('woocommerce');
+        
         /* Tao sidebar */
         $sidebar = array(
             'name' => __('Main Sidebar', 'store'),
@@ -145,4 +149,21 @@ if( !function_exists('store_theme_setup')){
 //        exit;
 //    }
 //    add_action('wp_logout','logout_page');
+    /**
+     * Show cart contents / total Ajax
+     */
+    add_filter( 'woocommerce_add_to_cart_fragments', 'store_theme_woocommerce_header_add_to_cart_fragment');
+
+    function store_theme_woocommerce_header_add_to_cart_fragment( $fragments ) {
+        global $woocommerce;
+
+        ob_start();
+
+        ?>
+        <span class="sidebarAllMainCartCount"><?php echo $woocommerce->cart->get_cart_contents_count(); ?></span>
+        <?php
+        $fragments['span.sidebarAllMainCartCount'] = ob_get_clean();
+        return $fragments;
+    }
+
 }

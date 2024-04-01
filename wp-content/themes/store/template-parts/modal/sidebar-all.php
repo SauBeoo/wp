@@ -59,7 +59,6 @@
             <a href="/checkout" class="mainCartButton">
                 THANH TOÁN
             </a>
-
         </div>
     </div>
     <div class="sidebarAllMainSearch" style="display: none;">
@@ -83,9 +82,7 @@
                 </div>
             </div>
         </div>
-        <div class="sidebarAllFooter">
-
-        </div>
+        <div class="sidebarAllFooter"></div>
     </div>
     <div class="sidebarAllMainWishlist" style="display: none;">
         <div class="sidebarAllHeader">
@@ -123,10 +120,9 @@
                         </div>
                     </div>
                 </div>
-            </div></div>
-        <div class="sidebarAllFooter">
-
+            </div>
         </div>
+        <div class="sidebarAllFooter"></div>
     </div>
     <div class="sidebarAllMainMenu" style="display: none;">
         <div class="sidebarAllHeader">
@@ -136,21 +132,11 @@
         <div class="sidebarAllBody">
             <nav id="sliderMenuVertical" class="mainNav">
                 <ul class="sliderMenu">
-
-
                     <li class="">
                         <a href="/pages/about-us" title="Giới Thiệu">
                             Giới Thiệu
                         </a>
                     </li>
-
-
-
-
-
-
-
-
                     <li class="active hasChild">
                         <a href="/" title="Áo Lót">
                             Áo Lót
@@ -158,8 +144,6 @@
                         </a>
                         <div class="subMenuTwo">
                             <div class="subMenuTwoColumOne haveThree border-right-new">
-
-
                                 <div class="subMenuItem hasChild ">
                                     <a href="/collections/bralette" title="Bralette">
                                         Bralette <i class="lni lni-chevron-right"></i>
@@ -192,9 +176,6 @@
 
                                     </ul>
                                 </div>
-
-
-
                                 <div class="subMenuItem hasChild ">
                                     <a href="/collections/bra-nang-nguc-1" title="Bra Nâng Ngực">
                                         Bra Nâng Ngực <i class="lni lni-chevron-right"></i>
@@ -215,51 +196,29 @@
 
                                     </ul>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/croptop" title="Croptop">
                                         Croptop
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bra-quay" title="Bra Quây">
                                         Bra Quây
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bra-cup-v" title="Bra Cup V">
                                         Bra Cup V
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bodysuit" title="Bodysuit">
                                         Bodysuit
                                     </a>
                                 </div>
-
-
                             </div>
                         </div>
                     </li>
-
-
-
-
-
-
-
-
                     <li class="active hasChild">
                         <a href="/" title="Quần lót">
                             Quần lót
@@ -267,8 +226,6 @@
                         </a>
                         <div class="subMenuTwo">
                             <div class="subMenuTwoColumOne haveThree border-right-new">
-
-
                                 <div class="subMenuItem hasChild ">
                                     <a href="/collections/quan-full-mong" title="Quần full mông">
                                         Quần full mông <i class="lni lni-chevron-right"></i>
@@ -307,9 +264,6 @@
 
                                     </ul>
                                 </div>
-
-
-
                                 <div class="subMenuItem hasChild ">
                                     <a href="/collections/quan-day" title="Quần dây Freesize">
                                         Quần dây Freesize <i class="lni lni-chevron-right"></i>
@@ -342,9 +296,6 @@
 
                                     </ul>
                                 </div>
-
-
-
                                 <div class="subMenuItem hasChild ">
                                     <a href="/collections/quan-nua-mong-1" title="Quần nửa mông">
                                         Quần nửa mông <i class="lni lni-chevron-right"></i>
@@ -365,9 +316,6 @@
 
                                     </ul>
                                 </div>
-
-
-
                                 <div class="subMenuItem hasChild ">
                                     <a href="/collections/quan-lot-khe" title="Quần lọt khe">
                                         Quần lọt khe <i class="lni lni-chevron-right"></i>
@@ -388,9 +336,6 @@
 
                                     </ul>
                                 </div>
-
-
-
                                 <div class="subMenuItem hasChild ">
                                     <a href="/collections/quan-che-bung" title="Quần che bụng">
                                         Quần che bụng <i class="lni lni-chevron-right"></i>
@@ -411,30 +356,9 @@
 
                                     </ul>
                                 </div>
-
-
                             </div>
                         </div>
                     </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <li class="active hasChild">
                         <a href="/" title="Bộ Sưu Tập">
                             Bộ Sưu Tập
@@ -449,70 +373,39 @@
                                         Bst Cánh Xuân
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bst-giang-sinh-dang-em" title="Bst Giáng Sinh Dáng Em">
                                         Bst Giáng Sinh Dáng Em
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bst-dang-ao-lamluy" title="BST dáng áo Lamluy">
                                         BST dáng áo Lamluy
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bst-khoe-sac-4" title="BST Khoe Sắc">
                                         BST Khoe Sắc
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bst-thu-tha-6" title="BST Thư Thả">
                                         BST Thư Thả
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bst-yeu-kieu-do-lot-lua" title="BST Yêu Kiều Đồ Lót Lụa">
                                         BST Yêu Kiều Đồ Lót Lụa
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/bst-rang-ro" title="BST Rạng Rỡ">
                                         BST Rạng Rỡ
                                     </a>
                                 </div>
-
-
                             </div>
                         </div>
                     </li>
-
-
-
-
-
-
-
-
-
-
-
                     <li class=" hasChild">
                         <a href="/collections/phu-kien" title="Phụ kiện">
                             Phụ kiện
@@ -520,49 +413,24 @@
                         </a>
                         <div class="subMenuTwo">
                             <div class="subMenuTwoColumOne noThree border-right-new">
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/khau-trang" title="Khẩu trang">
                                         Khẩu trang
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/day-ao" title="Dây áo">
                                         Dây áo
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/collections/kep-vo" title="Kẹp vớ">
                                         Kẹp vớ
                                     </a>
                                 </div>
-
-
                             </div>
                         </div>
                     </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <li class=" hasChild">
                         <a href="/blogs/nhung-cau-chuyen-nho-dang-yeu-tai-lamluy" title="Tin Tức">
                             Tin Tức
@@ -577,55 +445,33 @@
                                         Thời trang nội y
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/blogs/tips-chia-se-kinh-nghiem" title="Tips - Chia sẻ kinh nghiệm">
                                         Tips - Chia sẻ kinh nghiệm
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/blogs/nhung-cau-chuyen-nho-dang-yeu-tai-lamluy" title="Những câu chuyện nhỏ đáng yêu tại Lamluy">
                                         Những câu chuyện nhỏ đáng yêu tại Lamluy
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/blogs/vui-khoe-dep" title="Vui - Khỏe - Đẹp ♥️">
                                         Vui - Khỏe - Đẹp ♥️
                                     </a>
                                 </div>
-
-
-
                                 <div class="subMenuItem ">
                                     <a href="/blogs/kien-thuc" title="Kiến thức">
                                         Kiến thức
                                     </a>
                                 </div>
-
-
                             </div>
                         </div>
                     </li>
-
-
                 </ul>
             </nav>
-
-
-
-
-
         </div>
         <div class="sidebarAllFooter">
-
         </div>
     </div>
     <div class="sidebarAllFilter" style="display: none;">
@@ -639,12 +485,13 @@
                     <span>BỘ LỌC</span>
                     <button class="collectionFilterClose">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 409.806 409.806" style="enable-background:new 0 0 409.806 409.806;" xml:space="preserve">
-				<path d="M228.929,205.01L404.596,29.343c6.78-6.548,6.968-17.352,0.42-24.132c-6.548-6.78-17.352-6.968-24.132-0.42
-								 c-0.142,0.137-0.282,0.277-0.42,0.42L204.796,180.878L29.129,5.21c-6.78-6.548-17.584-6.36-24.132,0.42
-								 c-6.388,6.614-6.388,17.099,0,23.713L180.664,205.01L4.997,380.677c-6.663,6.664-6.663,17.468,0,24.132
-								 c6.664,6.662,17.468,6.662,24.132,0l175.667-175.667l175.667,175.667c6.78,6.548,17.584,6.36,24.132-0.42
-								 c6.387-6.614,6.387-17.099,0-23.712L228.929,205.01z"></path>
-			</svg>
+                            <path d="M228.929,205.01L404.596,29.343c6.78-6.548,6.968-17.352,0.42-24.132c-6.548-6.78-17.352-6.968-24.132-0.42
+                                     c-0.142,0.137-0.282,0.277-0.42,0.42L204.796,180.878L29.129,5.21c-6.78-6.548-17.584-6.36-24.132,0.42
+                                     c-6.388,6.614-6.388,17.099,0,23.713L180.664,205.01L4.997,380.677c-6.663,6.664-6.663,17.468,0,24.132
+                                     c6.664,6.662,17.468,6.662,24.132,0l175.667-175.667l175.667,175.667c6.78,6.548,17.584,6.36,24.132-0.42
+                                     c6.387-6.614,6.387-17.099,0-23.712L228.929,205.01z">
+                            </path>
+			            </svg>
                     </button>
                 </div>
                 <div class="collectionFilterMobileButton">
@@ -661,72 +508,58 @@
                             <input type="checkbox" id="data-variant-p1" value="S" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p1">S</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p2" value="M" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p2">M</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p3" value="L" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p3">L</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p4" value="XL" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p4">XL</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p5" value="FREESIZE" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p5">FREESIZE</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p6" value="32A" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p6">32A</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p7" value="32B" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p7">32B</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p8" value="32C" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p8">32C</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p9" value="34A" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p9">34A</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p10" value="34B" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p10">34B</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p11" value="34C" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p11">34C</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p12" value="36A" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p12">36A</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p13" value="36B" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p13">36B</label>
                         </li>
-
                         <li>
                             <input type="checkbox" id="data-variant-p14" value="36C" class="checkboxFilter" name="sizeFilter">
                             <label for="data-variant-p14">36C</label>
                         </li>
-
                     </ul>
                 </div>
             </div>

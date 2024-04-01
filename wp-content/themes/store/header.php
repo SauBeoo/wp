@@ -69,9 +69,11 @@
                             </a>
                         </div>
                         <div class="headerCart headerTool">
-                            <a href="/cart" data-type="sidebarAllMainCart">
+                            <a href="<?php echo wc_get_cart_url(); ?>" data-type="sidebarAllMainCart">
                                 <i class="lni lni-shopping-basket"></i>
-                                <span class="sidebarAllMainCartCount">0</span>
+                                <span class="sidebarAllMainCartCount">
+                                    <?php echo WC()->cart->get_cart_contents_count(); ?>
+                                </span>
                             </a>
                         </div>
                         <div class="headerSearch headerTool">

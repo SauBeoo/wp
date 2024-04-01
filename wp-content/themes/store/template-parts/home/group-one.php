@@ -61,8 +61,11 @@ if (!empty($term_query->terms)) {
                                 </a>
                             </div>
                             <div class="productAction" >
-                                <a href="" class="setAddCartLoop" data-id="1117836747"><i
-                                        class="lni lni-shopping-basket"></i></a>
+                                <a href="<?php echo do_shortcode( '[add_to_cart_url id=' .  $product->id . ']' ) ?>"
+                                   data-quantity="1" class="setAddCartLoop add_to_cart_button ajax_add_to_cart added" data-product_id="<?php echo $product->id ?>" ><i class="lni lni-shopping-basket">
+                                    </i>
+                                </a>
+
                                 <a href="javascript:void:0" class="setWishlist" data-handle="canh-tim-diu-dang"><i
                                         class="lni lni-heart"></i></a>
                             </div>
@@ -114,8 +117,9 @@ if (!empty($term_query->terms)) {
                             </a>
                         </div>
                         <div class="productAction" >
-                            <a href="" class="setAddCartLoop"><i
-                                    class="lni lni-shopping-basket"></i></a>
+                            <a href="<?php echo do_shortcode( '[add_to_cart_url id=' .  $product->id . ']' ) ?>" class="setAddCartLoop"><i class="lni lni-shopping-basket">
+                                </i>
+                            </a>
                             <a href="javascript:void:0" class="setWishlist" ><i
                                     class="lni lni-heart"></i></a>
                         </div>

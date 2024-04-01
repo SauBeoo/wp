@@ -115,24 +115,24 @@ F1GEN.Global = {
             $(this).addClass('active');
         })
     },
-    addCartLoop: function (){
-        $('body').on('click', '.setAddCartLoop', function(e){
-            e.preventDefault();
-            let id = $(this).attr('data-id');
-            $.ajax({
-                type: "POST",
-                url: "/cart/add.js",
-                data: {id: id, quantity: 1},
-                success: function(data){
-                    $('a[data-type="sidebarAllMainCart"]').trigger('click');
-                    F1GEN.Sidebar.getCartSidebar();
-                },
-                error: function(){
-                    $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
-                }
-            })
-        })
-    },
+    // addCartLoop: function (){
+    //     $('body').on('click', '.setAddCartLoop', function(e){
+    //         e.preventDefault();
+    //         let id = $(this).attr('data-id');
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "/cart/add.js",
+    //             data: {id: id, quantity: 1},
+    //             success: function(data){
+    //                 $('a[data-type="sidebarAllMainCart"]').trigger('click');
+    //                 F1GEN.Sidebar.getCartSidebar();
+    //             },
+    //             error: function(){
+    //                 $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+    //             }
+    //         })
+    //     })
+    // },
     headerScroll:function(){
         var flagScrollInit = 0;
         var funcScroll = function(){

@@ -149,6 +149,7 @@ if( !function_exists('store_theme_setup')){
 //        exit;
 //    }
 //    add_action('wp_logout','logout_page');
+    
     /**
      * Show cart contents / total Ajax
      */
@@ -165,5 +166,80 @@ if( !function_exists('store_theme_setup')){
         $fragments['span.sidebarAllMainCartCount'] = ob_get_clean();
         return $fragments;
     }
+    
+    add_action('wp_ajax_woocommerce_ajax_add_to_cart', 'woocommerce_ajax_add_to_cart');
+    add_action('wp_ajax_nopriv_woocommerce_ajax_add_to_cart', 'woocommerce_ajax_add_to_cart');
 
+    function woocommerce_ajax_add_to_cart() {
+        $product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($_POST['product_id']));
+        $quantity = empty($_POST['quantity']) ? 1 : wc_stock_amount($_POST['quantity']);
+        $variation_id = absint($_POST['variation_id']);
+        $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
+        $product_status = get_post_status($product_id);
+
+        if ($passed_validation && WC()->cart->add_to_cart($product_id, $quantity, $variation_id) && 'publish' === $product_status) {
+
+            do_action('woocommerce_ajax_added_to_cart', $product_id);
+
+            if ('yes' === get_option('woocommerce_cart_redirect_after_add')) {
+                wc_add_to_cart_message(array($product_id => $quantity), true);
+            }
+
+            WC_AJAX :: get_refreshed_fragments();
+        } else {
+
+            $data = array(
+                'error' => true,
+                'product_url' => apply_filters('woocommerce_cart_redirect_after_error', get_permalink($product_id), $product_id));
+
+            echo wp_send_json($data);
+        }
+
+        wp_die();
+    }
+
+    add_action('wp_ajax_fetch_cart_items', 'fetch_cart_items');
+    add_action('wp_ajax_nopriv_fetch_cart_items', 'fetch_cart_items');
+
+    function fetch_cart_items() {
+        // Retrieve cart items using WooCommerce functions
+        $cart_items = WC()->cart->get_cart();
+
+        // Prepare the response
+        $response = array();
+        foreach ($cart_items as $cart_item_key => $cart_item) {
+            $product = $cart_item['data'];
+            $response['total'] =  WC()->cart->get_cart_contents_count();
+//            $response['total_price'] = number_format(WC()->cart->total, 2, '.', '');
+            $response['total_price'] = WC()->cart->get_cart_total();
+            // Customize the response as needed
+            $response['items'][] = array(
+                'product_name' => $product->get_name(),
+                'product_id' => $product->id ?? 0,
+                'cart_item_key' => $cart_item_key  ?? 0,
+                'product_img' => wp_get_attachment_image_url ( $product->get_image_id(), 'medium' ),
+                'quantity' => $cart_item['quantity'],
+                'subtotal' => WC()->cart->get_product_subtotal($product, $cart_item['quantity']),
+                'price' => $product->get_price_html(),
+                'stock_quantity' => $product->get_stock_quantity(),
+            );
+        }
+
+        // Send the response as JSON
+        wp_send_json($response);
+    }
+    
+    add_action('wp_ajax_update_cart_quantity', 'update_cart_quantity');
+    add_action('wp_ajax_nopriv_update_cart_quantity', 'update_cart_quantity');
+
+    function update_cart_quantity() {
+        $cart_item_key = $_REQUEST['cart_item_key'];
+        $quantity = $_REQUEST['quantity'];
+        $value = $_REQUEST['value'];
+
+        WC()->cart->set_quantity($cart_item_key, $quantity + $value);
+        $cart = WC()->cart;
+        echo json_encode($cart->total);
+        wp_die();
+    }
 }

@@ -5,53 +5,11 @@
             <span>Giỏ hàng</span>
         </div>
         <div class="sidebarAllBody">
-            <div class="itemMain" data-id="1117836767">
-                <a href="/products/canh-trang-tinh-khoi"><img class="itemImage img-fluid" src="https://product.hstatic.net/200000272403/product/71_dce589d0c11e4a779e0aab316262da5f.png"></a>
-                <div class="itemInfo">
-                    <a class="itemTitle" href="/products/canh-trang-tinh-khoi">Bralette Cánh Trắng Tinh Khôi</a>
-                    <div class="itemVariant"><span>S</span></div>
-                    <div class="itemPriceInfo">
-                        <span class="itemPriceMain">295,000₫</span>
-                        <span class="itemPriceCompare"><del></del></span>
-                    </div>
-                    <div class="itemAction">
-                        <div class="itemQuantity">
-                            <button class="qtyBtn minusQuan" data-type="minus">-</button>
-                            <input type="number" id="itemQuantityCart" name="quantity" value="1" min="1" class="quantitySelector">
-                            <button class="qtyBtn plusQuan" data-type="plus">+</button>
-                        </div>
-                        <div class="removeItem">
-                            <i class="lni lni-trash"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="itemMain" data-id="1117836831">
-                <a href="/products/bralette-canh-nang-mai"><img class="itemImage img-fluid" src="https://product.hstatic.net/200000272403/product/89_961052b0c2f84e59855e2f047e733fa2.png"></a>
-                <div class="itemInfo">
-                    <a class="itemTitle" href="/products/bralette-canh-nang-mai">Bralette Cánh Nắng Mai</a>
-                    <div class="itemVariant"><span>S</span></div>
-                    <div class="itemPriceInfo">
-                        <span class="itemPriceMain">295,000₫</span>
-                        <span class="itemPriceCompare"><del></del></span>
-                    </div>
-                    <div class="itemAction">
-                        <div class="itemQuantity">
-                            <button class="qtyBtn minusQuan" data-type="minus">-</button>
-                            <input type="number" id="itemQuantityCart" name="quantity" value="1" min="1" class="quantitySelector">
-                            <button class="qtyBtn plusQuan" data-type="plus">+</button>
-                        </div>
-                        <div class="removeItem">
-                            <i class="lni lni-trash"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="sidebarAllFooter">
             <div class="totalPrice">
                 <span>Tổng cộng: </span>
-                <span>590,000₫</span>
+                <span id="total_price_cart"></span>
             </div>
             <a href="/cart" class="mainCartButton continue">
                 XEM GIỎ HÀNG

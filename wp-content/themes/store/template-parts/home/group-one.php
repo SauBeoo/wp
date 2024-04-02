@@ -61,8 +61,8 @@ if (!empty($term_query->terms)) {
                                 </a>
                             </div>
                             <div class="productAction" >
-                                <a href="<?php echo do_shortcode( '[add_to_cart_url id=' .  $product->id . ']' ) ?>"
-                                   data-quantity="1" class="setAddCartLoop add_to_cart_button ajax_add_to_cart added" data-product_id="<?php echo $product->id ?>" ><i class="lni lni-shopping-basket">
+                                <a href=""
+                                   data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>" ><i class="lni lni-shopping-basket">
                                     </i>
                                 </a>
 
@@ -77,7 +77,7 @@ if (!empty($term_query->terms)) {
                                 </h3>
                                 <div class="productPriceMain" >
                                     <p class="productPrice">
-                                        <?php echo $product->price ?? 0 ?>₫
+                                        <?php echo $product->get_price_html() ?? 0 ?>
                                     </p>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@ if (!empty($term_query->terms)) {
                             </a>
                         </div>
                         <div class="productAction" >
-                            <a href="<?php echo do_shortcode( '[add_to_cart_url id=' .  $product->id . ']' ) ?>" class="setAddCartLoop"><i class="lni lni-shopping-basket">
+                            <a href=""  data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>"><i class="lni lni-shopping-basket">
                                 </i>
                             </a>
                             <a href="javascript:void:0" class="setWishlist" ><i

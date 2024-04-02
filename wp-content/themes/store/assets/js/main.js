@@ -115,24 +115,33 @@ F1GEN.Global = {
             $(this).addClass('active');
         })
     },
-    // addCartLoop: function (){
-    //     $('body').on('click', '.setAddCartLoop', function(e){
-    //         e.preventDefault();
-    //         let id = $(this).attr('data-id');
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "/cart/add.js",
-    //             data: {id: id, quantity: 1},
-    //             success: function(data){
-    //                 $('a[data-type="sidebarAllMainCart"]').trigger('click');
-    //                 F1GEN.Sidebar.getCartSidebar();
-    //             },
-    //             error: function(){
-    //                 $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
-    //             }
-    //         })
-    //     })
-    // },
+    addCartLoop: function (){
+        $('body').on('click', '.setAddCartLoop', function(e){
+            e.preventDefault();
+            let product_id = $(this).attr('data-product_id');
+            $.ajax({
+                type: "POST",
+                url: wc_add_to_cart_params.ajax_url,
+                data: {
+                    product_id: product_id, 
+                    quantity: 1,
+                    action: 'woocommerce_ajax_add_to_cart'
+                },
+                success: function(data){
+                    if(data.error){
+                        $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                    }else{
+                        F1GEN.Sidebar.getCartSidebar();
+                        $('a[data-type="sidebarAllMainCart"]').trigger('click');
+                        $( document.body ).trigger( 'added_to_cart', [ data.fragments, data.cart_hash ] );
+                    }
+                },
+                error: function(){
+                    $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                }
+            })
+        })
+    },
     headerScroll:function(){
         var flagScrollInit = 0;
         var funcScroll = function(){
@@ -234,75 +243,77 @@ F1GEN.Sidebar = {
     },
     getCartSidebar:function(){
         setTimeout(function(){
-            // $.get('/cart.js', function(res){
-            //     let item = '';
-            //     $.each(res.items, function(index, value){
-            //         let flagLengthOption = value.variant_options.length - 1;
-            //         let flagVariant = '';
-            //         $.each(value.variant_options, function(key, val){
-            //             if(key === flagLengthOption){
-            //                 flagVariant += `<span>${val}</span>`;
-            //             }else{
-            //                 flagVariant += `<span>${val}&nbsp;/&nbsp;</span>`;
-            //             }
-            //         })
-            //         item += `
-            //             <div class="itemMain" data-id="${value.variant_id}">
-            //             <a href="${value.url}"><img class="itemImage img-fluid" src="${value.image}"/></a>
-            //             <div class="itemInfo">
-            //             <a class="itemTitle" href="${value.url}">${value.title}</a>
-            //             <div class="itemVariant">${flagVariant}</div>
-            //             <div class="itemPriceInfo">
-            //             <span class="itemPriceMain">${Haravan.formatMoney(value.price, window.F1GEN_vars.formatMoney)}</span>
-            //             <span class="itemPriceCompare"><del>${value.line_price > value.price ? Haravan.formatMoney(value.line_price, window.F1GEN_vars.formatMoney) : ''}</del></span>
-            //             </div>
-            //             <div class="itemAction">
-            //             <div class="itemQuantity">
-            //             <button class="qtyBtn minusQuan" data-type="minus">-</button>
-            //             <input type="number" id="itemQuantityCart" name="quantity" value="${value.quantity}" min="1" class="quantitySelector">
-            //             <button class="qtyBtn plusQuan" data-type="plus">+</button>
-            //             </div>
-            //             <div class="removeItem">
-            //             <i class="lni lni-trash"></i>
-            //             </div>
-            //             </div>
-            //             </div>
-            //             </div>
-            //             `;
-            //     });
-            //     $('.sidebarAllMainCart .sidebarAllBody').html('');
-            //     $('.sidebarAllMainCart .totalPrice span').last().html(Haravan.formatMoney(res.total_price, window.F1GEN_vars.formatMoney))
-            //     $('.headerCart .sidebarAllMainCartCount').html(res.item_count)
-            //     $('.sidebarAllMainCart .sidebarAllBody').html(item);
-            // });
+            $.get(wc_add_to_cart_params.ajax_url,{
+                    action: 'fetch_cart_items'
+                }, function(res){
+                let item = '';
+                $.each(res.items, function(index, value){
+                    item += `
+                        <div class="itemMain" data-cart_item_key="${value.cart_item_key}">
+                        <a href="#"><img class="itemImage img-fluid" src="${value.product_img}"/></a>
+                            <div class="itemInfo">
+                                <a class="itemTitle" href="#">${value.product_name}</a>
+                                <div class="itemVariant">S</div>
+                                <div class="itemPriceInfo">
+                                    <span class="itemPriceMain">${value.price}</span>
+                                    <span class="itemPriceCompare"><del>${value.subtotal}</del></span>
+                                </div>
+                                <div class="itemAction">
+                                    <div class="itemQuantity">
+                                        <button class="qtyBtn minusQuan" data-type="minus">-</button>
+                                        <input type="number" id="itemQuantityCart" name="quantity" value="${value.quantity}" min="1"  data-stock_quantity="${value.stock_quantity}" class="quantitySelector">
+                                        <button class="qtyBtn plusQuan" data-type="plus" >+</button>
+                                    </div>
+                                    <div class="removeItem">
+                                    <i class="lni lni-trash"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                });
+                $('.sidebarAllMainCart .sidebarAllBody').html('');
+                $('#total_price_cart').html('')
+                $('#total_price_cart').html(res.total_price)
+                $('.headerCart .sidebarAllMainCartCount').html(res.total)
+                $('.sidebarAllMainCart .sidebarAllBody').html(item);
+            });
         },0)
     },
     changeQuantitySidebar:function(){
-        $('body').on('click','.sidebarAllMainCart .itemQuantity .qtyBtn',function(e){
+        $('body').on('click', '.sidebarAllMainCart .itemQuantity .qtyBtn', function (e) {
             e.preventDefault();
             let type = $(this).data('type');
-            if(type == "plus"){
-                $(this).prev().val(parseInt($(this).prev().val()) + 1);
-            }else{
-                if(parseInt($(this).next().val()) !== 1)
+            if (type == "plus") {
+                let stock_quantity = $(this).prev().data('stock_quantity');
+                let quantity = parseInt($(this).prev().val());
+                console.log(stock_quantity, quantity)
+                if (quantity < stock_quantity || stock_quantity == null) {
+                    $(this).prev().val(parseInt($(this).prev().val()) + 1);
+                } else {
+                    $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                }
+            } else {
+                if (parseInt($(this).next().val()) !== 1)
                     $(this).next().val(parseInt($(this).next().val()) - 1);
             }
-            var idItem = $(this).parents('.itemMain').attr('data-id');
-            var quanItem =  $(this).parent().find('#itemQuantityCart').val();
+            const cart_item_key = $(this).parents('.itemMain').attr('data-cart_item_key');
+            const quanItem = $(this).parent().find('#itemQuantityCart').val();
             $.ajax({
                 type: 'POST',
                 async:false,
-                url: '/cart/change.js',
-                data:  {
-                    id: idItem,
-                    quantity: quanItem
+                url: wc_add_to_cart_params.ajax_url,
+                data: {
+                    cart_item_key: cart_item_key,
+                    quantity: quanItem,
+                    action: 'update_cart_quantity'
                 },
                 dataType: 'json',
-                success: function(cart) {
+                success: function (cart) {
                     F1GEN.Sidebar.getCartSidebar();
                 },
-                error: function(XMLHttpRequest, textStatus) {
-                    Haravan.onError(XMLHttpRequest, textStatus);
+                error: function (XMLHttpRequest, textStatus) {
+                    console.log(XMLHttpRequest, textStatus);
                 }
             })
         })

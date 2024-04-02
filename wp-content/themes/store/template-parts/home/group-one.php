@@ -1,11 +1,8 @@
 <?php
-$term_args = array( 'taxonomy' => 'product_cat',
-// 'childless' => 'true'
-);
+$term_args = array( 'taxonomy' => 'product_cat');
 $term_query = new WP_Term_Query($term_args);
 if (!empty($term_query->terms)) {
     foreach ($term_query->terms as $term) {
-        
         if ($custom_content = get_field('category_top', 'product_cat_' . $term->term_id)){
 ?>
 <section id="groupOne">
@@ -61,6 +58,9 @@ if (!empty($term_query->terms)) {
                                 </a>
                             </div>
                             <div class="productAction" >
+                                <a href="javascript:void:0" class="setQuickview" data-product_id="<?php echo $product->id ?>" >
+                                    <i class="lni lni-search-alt"></i>
+                                </a>
                                 <a href=""
                                    data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>" ><i class="lni lni-shopping-basket">
                                     </i>
@@ -117,6 +117,7 @@ if (!empty($term_query->terms)) {
                             </a>
                         </div>
                         <div class="productAction" >
+                            <a href="javascript:void:0" class="setQuickview" data-handle="canh-tim-diu-dang" data-toggle="modal" data-target="#quickviewLogin" data-whatever="@quickviewLogin"><i class="lni lni-search-alt"></i></a>
                             <a href=""  data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>"><i class="lni lni-shopping-basket">
                                 </i>
                             </a>

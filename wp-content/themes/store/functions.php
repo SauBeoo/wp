@@ -228,7 +228,31 @@ if( !function_exists('store_theme_setup')){
         // Send the response as JSON
         wp_send_json($response);
     }
-    
+
+    add_action('wp_ajax_get_items', 'get_items');
+    add_action('wp_ajax_nopriv_get_items', 'get_items');
+    function get_items() {
+
+        $product_id = $_REQUEST['product_id'];
+        $product = wc_get_product( $product_id );
+        $size = get_field('size', $product_id);
+        $terms = wp_get_post_terms( $product_id, 'product_cat' );
+        $term  = reset($terms);
+        $response = array(
+            'product_name' => $product->get_name(),
+            'product_id' => $product_id ?? 0,
+            'product_img' => wp_get_attachment_image_url ( $product->get_image_id(), 'medium' ),
+            'price' => $product->get_price_html(),
+            'size' => $size,
+            'sku' => $product->get_sku(),
+            'cate' => $term->name,
+        );
+
+        // Send the response as JSON
+        wp_send_json($response);
+//        wp_die();
+    }
+
     add_action('wp_ajax_update_cart_quantity', 'update_cart_quantity');
     add_action('wp_ajax_nopriv_update_cart_quantity', 'update_cart_quantity');
 

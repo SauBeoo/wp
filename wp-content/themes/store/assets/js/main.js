@@ -123,7 +123,7 @@ F1GEN.Global = {
                 type: "POST",
                 url: wc_add_to_cart_params.ajax_url,
                 data: {
-                    product_id: product_id, 
+                    product_id: product_id,
                     quantity: 1,
                     action: 'woocommerce_ajax_add_to_cart'
                 },
@@ -256,7 +256,7 @@ F1GEN.Sidebar = {
                         <a href="#"><img class="itemImage img-fluid" src="${value.product_img}"/></a>
                             <div class="itemInfo">
                                 <a class="itemTitle" href="#">${value.product_name}</a>
-                                <div class="itemVariant">S</div>
+                                <div class="itemVariant" >Size:<span style="text-transform: uppercase;">${value.variation_name}</span></div>
                                 <div class="itemPriceInfo">
                                     <span class="itemPriceMain">${value.price}</span>
                                     <span class="itemPriceCompare"><del>${value.subtotal}</del></span>
@@ -454,25 +454,6 @@ F1GEN.Wishlist = {
     setWishlistProductLoop: function(){
         $('body').on('click','.setWishlist',function(e){
             e.preventDefault();
-            var phand = [];
-            var handle = $(this).attr('data-handle');
-            console.log(document.cookie.indexOf('last_wishlist_products'));
-            if(document.cookie.indexOf('last_wishlist_products') !== -1){
-                var las = CookiesTop.getJSON('last_wishlist_products');
-                if($.inArray(handle, las) === -1){
-                    phand = [handle];
-                    for(var i = 0; i < las.length; i++){
-                        phand.push(las[i]);
-                        if(phand.length > 15){
-                            break;
-                        }
-                    }
-                    CookiesTop.set('last_wishlist_products', phand, { expires: 180 });
-                }
-            }else{
-                phand = [handle];
-                CookiesTop.set('last_wishlist_products', phand, { expires: 180 });
-            }
             F1GEN.Wishlist.wishlistProduct(3, 5);
             $('a[data-type="sidebarAllMainWishlist"]').trigger('click');
             F1GEN.Wishlist.activityWishlist();
@@ -1764,15 +1745,13 @@ F1GEN.Quickview = {
         $('body').on('click','.setQuickview',function(e){
             if($(window).width() > 768 ){
                 e.preventDefault();
-                // $('.loadingWrapper').addClass('open');
-                // $('#quickviewModal').modal('show');
-                // $('#quickviewModal .modal-body').css('opacity',0);
+                $('.loadingWrapper').addClass('open');
+                $('#quickviewModal').modal('show');
+                $('#quickviewModal .modal-body').css('opacity',0);
                 // let flagHandle = $(this).attr('data-handle');
-                // self.sliderInit();
                 // $('.loadingWrapper').removeClass('open');
                 // $('#quickviewModal .modal-body').css('opacity',1);
                 let product_id = $(this).attr('data-product_id');
-                console.log(product_id);
                 // self.changeOption();
                 // self.render();
                 // /*F1GEN.Quickview.setAvailableVariants();*/
@@ -1789,18 +1768,16 @@ F1GEN.Quickview = {
                     action: 'get_items',
                     product_id: product_id,
                 }, function(res){
-                        console.log(res)
-                        // $('#quickviewModal .modal-body').html(product);
-                        // setTimeout(function(){
-                        //     self.sliderInit();
-                        //     $('.loadingWrapper').removeClass('open');
-                        //     $('#quickviewModal .modal-body').css('opacity',1);
-                        //     self.changeOption();
-                        //     self.render();
+                        $('#quickviewModal .modal-body').html(res);
+                        setTimeout(function(){
+                            // self.sliderInit();
+                            $('.loadingWrapper').removeClass('open');
+                            $('#quickviewModal .modal-body').css('opacity',1);
+                            self.variants();
                         //     /*F1GEN.Quickview.setAvailableVariants();*/
                         //     self.setStatusVariants();
                         //     self.checkOptionFirst();
-                        // },1000)
+                        },1000)
                     });
                 //     error: function(err){}
             }else{
@@ -1927,30 +1904,20 @@ F1GEN.Quickview = {
             self.checkAvailable(true, name, value);
         })
     },
-    render: function(){
-        new Haravan.OptionSelectors("productSelectQW", { product: window.F1GEN_vars.quickview, onVariantSelected: this.variants });
-    },
-    variants: function(variant, selector){
-        if(variant){
-            if(variant.available){
-                $('#addToCartQW').removeClass('sold-out').text('Thêm vào giỏ hàng');
-                window.F1GEN_vars.quickview.availableOption = true;
-            }else{
-                $('#addToCartQW').addClass('sold-out').text('Hết hàng');
-                window.F1GEN_vars.quickview.availableOption = false;
+    // render: function(){
+    //     new Haravan.OptionSelectors("productSelectQW", { product: window.F1GEN_vars.quickview, onVariantSelected: this.variants });
+    // },
+    variants: function(){
+        $('body').on('click', '.product-sw-select-itemQW', function(e){
+            const max_qty = $(this).find('.trigger-option-swQW').attr('data-qty');
+            const sku = $(this).find('.trigger-option-swQW').attr('data-sku');
+            const id = $(this).find('.trigger-option-swQW').val();
+            if(max_qty > 0){
+                $('#sku').html(sku);
+                $('#addToCartQW').attr('data-id',id);
+                $('#buyNowQW').attr('data-id',id);
             }
-            var saleChange = Math.round(100 - (variant.price / (variant.compare_at_price / 100)));
-            $('.productPriceMainQW').text(Haravan.formatMoney(variant.price, window.F1GEN_vars.formatMoney));
-            if(variant.compare_at_price > variant.price){
-                $('.productPriceCompareQW').text(Haravan.formatMoney(variant.compare_at_price, window.F1GEN_vars.formatMoney)).removeClass('hidden');
-                $('.productDiscountQW').html('(-' + saleChange + '%)')
-            }else{
-                $('.productPriceCompareQW').addClass('hidden');
-            }
-            $('.productSkuQW').html('<span>Mã sản phẩm: </span>' + variant.sku);
-        }else{
-            $('#addToCartQW').addClass('sold-out').text('Hết hàng');
-        }
+        })
     },
     activeAvailable: function(){
         if(window.F1GEN_vars.quickview.available){
@@ -1984,15 +1951,6 @@ F1GEN.Quickview = {
     },
     sliderInit: function(){
         var self = this;
-        self.galleryThumbs = new Swiper('#quickviewModal .thumbImageQW ', {
-            spaceBetween: 10,
-            slidesPerView: 5,
-            loopedSlides: 5, //looped slides should be the same
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
-            centeredSlides:true,
-            loop: true
-        });
         self.galleryTop = new Swiper('#quickviewModal .featureImageQW ', {
             spaceBetween: 10,
             loop:true,
@@ -2029,36 +1987,61 @@ F1GEN.Quickview = {
         var self = this;
         $('body').on('click', '#addToCartQW', function(e){
             e.preventDefault();
-            let id = $('#productSelectQW').val();
-            let quantity = $('#quantityQW').val();
-            $.ajax({
-                type: "POST",
-                url: "/cart/add.js",
-                data: {id: id, quantity: quantity},
-                success: function(data){
-                    $('a[data-type="sidebarAllMainCart"]').trigger('click');
-                    F1GEN.Sidebar.getCartSidebar();
-                },
-                error: function(){
-                    $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
-                }
-            })
+            let product_id = $(this).attr('data-id');
+            const qty= $('#quantityQW').val();
+            if(product_id){
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    url: wc_add_to_cart_params.ajax_url,
+                    data: {
+                        product_id: product_id,
+                        quantity: qty,
+                        action: 'woocommerce_ajax_add_to_cart'
+                    },
+                    success: function(data){
+                        if(data.error){
+                            $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                        }else{
+                            F1GEN.Sidebar.getCartSidebar();
+                            setTimeout(function(){
+                                $('a[data-type="sidebarAllMainCart"]').trigger('click');
+                                $( document.body ).trigger( 'added_to_cart', [ data.fragments, data.cart_hash ] );
+                            },1000)
+                        }
+                    },
+                    error: function(){
+                        $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                    }
+                })
+            }else{
+                $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, vui lòng chọn sản phẩm!');;
+            }
         })
         $('body').on('click', '#buyNowQW', function(e){
             e.preventDefault();
-            let id = $('#productSelectQW').val();
+            let product_id = $(this).attr('data-id');
             let quantity = $('#quantityQW').val();
-            $.ajax({
-                type: "POST",
-                url: "/cart/add.js",
-                data: {id: id, quantity: quantity},
-                success: function(data){
-                    window.location.href="/checkout";
-                },
-                error: function(){
-                    $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
-                }
-            })
+            if(product_id){
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    url: wc_add_to_cart_params.ajax_url,
+                    data: {
+                        product_id: product_id,
+                        quantity: quantity,
+                        action: 'woocommerce_ajax_add_to_cart'
+                    },
+                    success: function(data){
+                        window.location.href="checkout";
+                    },
+                    error: function(){
+                        $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                    }
+                })
+            }else{
+                $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, vui lòng chọn sản phẩm!');;
+            }
         })
     },
 };

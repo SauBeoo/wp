@@ -40,7 +40,7 @@ if (!empty($term_query->terms)) {
                     <div class="productWrapper" >
                         <div class="productImg" >
                             <div class="productImgWrap" >
-                                <a href="/products/canh-tim-diu-dang" title="<?php echo $product->get_title();?>"
+                                <a href="<?php echo esc_url( get_permalink( $product->id ) ) ?>" title="<?php echo $product->get_title();?>"
                                    class="productImgLink">
                                     <picture>
                                         <img  loading="lazy" data-src="<?php echo wp_get_attachment_image_url ( $product->get_image_id(), 'woocommerce_single' ); ?>"
@@ -61,19 +61,18 @@ if (!empty($term_query->terms)) {
                                 <a href="javascript:void:0" class="setQuickview" data-product_id="<?php echo $product->id ?>" >
                                     <i class="lni lni-search-alt"></i>
                                 </a>
-                                <a href=""
-                                   data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>" ><i class="lni lni-shopping-basket">
-                                    </i>
+                                <a href="" data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>">
+                                    <i class="lni lni-shopping-basket"></i>
                                 </a>
 
-                                <a href="javascript:void:0" class="setWishlist" data-handle="canh-tim-diu-dang"><i
+                                <a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'add_to_wishlist', $product->id, get_site_url()  ), 'add_to_wishlist' ) ); ?>" class="setWishlist"><i
                                         class="lni lni-heart"></i></a>
                             </div>
                         </div>
                         <div class="productDetail" >
                             <div class="productDetailMain" >
                                 <h3 class="productName">
-                                    <a href="/products/canh-tim-diu-dang" title="<?php echo $product->get_title();?>"><?php echo $product->get_title();?></a>
+                                    <a href="<?php echo esc_url( get_permalink( $product->id ) ) ?>" title="<?php echo $product->get_title();?>"><?php echo $product->get_title();?></a>
                                 </h3>
                                 <div class="productPriceMain" >
                                     <p class="productPrice">
@@ -90,7 +89,7 @@ if (!empty($term_query->terms)) {
                 <div class="productWrapper" >
                     <div class="productImg" >
                         <div class="productImgWrap" >
-                            <a href="/products/canh-tim-diu-dang" title="<?php echo $product->get_title();?>"
+                            <a href="<?php echo esc_url( get_permalink( $product->id ) ) ?>" title="<?php echo $product->get_title();?>"
                                class="productImgLink">
                                 <picture>
                                     <source srcset="<?php echo wp_get_attachment_image_url ( $product->get_image_id(), 'woocommerce_single' ); ?>"
@@ -128,7 +127,7 @@ if (!empty($term_query->terms)) {
                     <div class="productDetail" >
                         <div class="productDetailMain" >
                             <h3 class="productName">
-                                <a href="/products/canh-tim-diu-dang" title="<?php echo $product->get_title();?>"><?php echo $product->get_title();?></a>
+                                <a href="<?php echo esc_url( get_permalink( $product->id ) ) ?>" title="<?php echo $product->get_title();?>"><?php echo $product->get_title();?></a>
                             </h3>
                             <div class="productPriceMain" >
                                 <p class="productPrice"><?php echo $product->price ?? 0 ?>₫</p>

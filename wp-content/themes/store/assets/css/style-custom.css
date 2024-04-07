@@ -4487,3 +4487,11 @@ img.mfp-img {
 }
 .grid-item-4 {grid-area: 2/1/5/3;}
 
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}

@@ -1,6 +1,5 @@
 <section id="banner">
     <div class="bannerMain" >
-
         <div class="bannerMainItem" >
             <a href="/collections/all">
                 <picture>

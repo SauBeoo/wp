@@ -63,9 +63,9 @@
                             </a>
                         </div>
                         <div class="headerWishlist headerTool">
-                            <a href="/account" data-type="sidebarAllMainWishlist">
+                            <a  href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>" data-type="sidebarAllMainWishlist">
                                 <i class="lni lni-heart"></i>
-                                <span class="sidebarAllMainWishlistCount">0</span>
+                                <span class="sidebarAllMainWishlistCount"><?php echo esc_html( yith_wcwl_count_all_products() ); ?></span>
                             </a>
                         </div>
                         <div class="headerCart headerTool">

@@ -65,8 +65,8 @@ if (!empty($term_query->terms)) {
                                     <i class="lni lni-shopping-basket"></i>
                                 </a>
 
-                                <a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'add_to_wishlist', $product->id, get_site_url()  ), 'add_to_wishlist' ) ); ?>" class="setWishlist"><i
-                                        class="lni lni-heart"></i></a>
+                                <a href="" class="setWishlist" data-product_id="<?php echo $product->id ?>" data-nonce="<?php echo wp_create_nonce('add_to_wishlist'); ?>">
+                                    <i class="lni lni-heart"></i></a>
                             </div>
                         </div>
                         <div class="productDetail" >

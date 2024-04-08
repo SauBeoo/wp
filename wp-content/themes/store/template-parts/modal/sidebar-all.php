@@ -42,43 +42,43 @@
         </div>
         <div class="sidebarAllFooter"></div>
     </div>
-    <div class="sidebarAllMainWishlist" style="display: none;">
+    <div class="sidebarAllMainWishlist">
         <div class="sidebarAllHeader">
             <span class="closeSidebar"><i class="lni lni-close"></i></span>
             <span>Yêu thích</span>
         </div>
-        <div class="sidebarAllBody" style="display: block;">
-            <div class="itemMainWishlist" data-handle="canh-tim-diu-dang">
-                <a href="/products/canh-tim-diu-dang">
-                    <picture>
-                        <source srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_large.png" data-srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_large.png" media="(max-width: 767px)">
-                        <source srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" data-srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" media="(max-width: 768px)">
-                        <img data-src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" class="itemImage img-fluid ls-is-cached lazyloaded" alt=" Bralette Cánh Tím Dịu Dàng ">
-                    </picture>
-                </a>
-                <div class="itemInfo">
-                    <a class="itemTitle" href="/products/canh-tim-diu-dang">Bralette Cánh Tím Dịu Dàng</a>
-                    <div class="itemPriceInfo">
-                        <span class="itemPriceMain">295,000₫</span>
-
-                    </div>
-                    <div class="itemAction">
-                        <div class="groupAdd">
-                            <div class="itemQuantity">
-                                <button class="qtyBtn minusQuan" data-type="minus">-</button>
-                                <input type="number" id="itemQuantityWishlist" name="quantity" value="1" min="1" class="quantitySelector">
-                                <button class="qtyBtn plusQuan" data-type="plus">+</button>
-                            </div>
-                            <div class="removeItem" data-handle="canh-tim-diu-dang">
-                                <i class="lni lni-trash"></i>
-                            </div>
-                        </div>
-                        <div class="itemAdd">
-                            <a class="itemAddFromWishList" data-id="1117836747">Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="sidebarAllBody" >
+<!--            <div class="itemMainWishlist" data-handle="canh-tim-diu-dang">-->
+<!--                <a href="/products/canh-tim-diu-dang">-->
+<!--                    <picture>-->
+<!--                        <source srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_large.png" data-srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_large.png" media="(max-width: 767px)">-->
+<!--                        <source srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" data-srcset="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" media="(max-width: 768px)">-->
+<!--                        <img data-src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" src="//product.hstatic.net/200000272403/product/85_ca27c5d5aa1743568f551d2d113da31b_grande.png" class="itemImage img-fluid ls-is-cached lazyloaded" alt=" Bralette Cánh Tím Dịu Dàng ">-->
+<!--                    </picture>-->
+<!--                </a>-->
+<!--                <div class="itemInfo">-->
+<!--                    <a class="itemTitle" href="/products/canh-tim-diu-dang">Bralette Cánh Tím Dịu Dàng</a>-->
+<!--                    <div class="itemPriceInfo">-->
+<!--                        <span class="itemPriceMain">295,000₫</span>-->
+<!---->
+<!--                    </div>-->
+<!--                    <div class="itemAction">-->
+<!--                        <div class="groupAdd">-->
+<!--                            <div class="itemQuantity">-->
+<!--                                <button class="qtyBtn minusQuan" data-type="minus">-</button>-->
+<!--                                <input type="number" id="itemQuantityWishlist" name="quantity" value="1" min="1" class="quantitySelector">-->
+<!--                                <button class="qtyBtn plusQuan" data-type="plus">+</button>-->
+<!--                            </div>-->
+<!--                            <div class="removeItem" data-handle="canh-tim-diu-dang">-->
+<!--                                <i class="lni lni-trash"></i>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="itemAdd">-->
+<!--                            <a class="itemAddFromWishList" data-id="1117836747">Thêm vào giỏ</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
         <div class="sidebarAllFooter"></div>
     </div>

@@ -454,66 +454,109 @@ F1GEN.Wishlist = {
     setWishlistProductLoop: function(){
         $('body').on('click','.setWishlist',function(e){
             e.preventDefault();
-            F1GEN.Wishlist.wishlistProduct(3, 5);
+            var phand = [];
+            var handle = $(this).attr('data-product_id');
+            if(document.cookie.indexOf('last_wishlist_products') !== -1){
+                var las = CookiesTop.getJSON('last_wishlist_products');
+                if($.inArray(handle, las) === -1){
+                    phand = [handle];
+                    for(var i = 0; i < las.length; i++){
+                        phand.push(las[i]);
+                        if(phand.length > 15){
+                            break;
+                        }
+                    }
+                    CookiesTop.set('last_wishlist_products', phand, { expires: 180 });
+                }
+            }else{
+                phand = [handle];
+                CookiesTop.set('last_wishlist_products', phand, { expires: 180 });
+            }
+            // F1GEN.Wishlist.wishlistProduct();
+            F1GEN.Wishlist.addWishlistProduct($(this));
             $('a[data-type="sidebarAllMainWishlist"]').trigger('click');
             F1GEN.Wishlist.activityWishlist();
         })
     },
+    addWishlistProduct:function (that){
+        const product_id = that.attr('data-product_id');
+        const nonce =  that.attr('data-nonce');
+        $.ajax({
+            type: 'POST',
+            async:false,
+            url: wc_add_to_cart_params.ajax_url,
+            data: {
+                add_to_wishlist: product_id,
+                nonce: nonce,
+                action: 'add_item_to_wishlist'
+            },
+            dataType: 'json',
+            success: function(cart) {
+                F1GEN.Sidebar.getCartSidebar();
+            },
+            error: function(XMLHttpRequest, textStatus) {
+                Haravan.onError(XMLHttpRequest, textStatus);
+            }
+        })
+    },
     wishlistProduct: function(items, margin){
+        // console.log(document.cookie.indexOf('last_wishlist_products'),'1232',$('.sidebarAllMainWishlist .sidebarAllBody').length);
         if($('.sidebarAllMainWishlist .sidebarAllBody').length > 0){
+            console.log(document.cookie.indexOf('last_wishlist_products'),'1232',$('.sidebarAllMainWishlist .sidebarAllBody').length);
             if(document.cookie.indexOf('last_wishlist_products') !== -1){
                 $('.sidebarAllMainWishlist .sidebarAllBody').html('')
                 var last_wishlist_pro_array = CookiesTop.getJSON('last_wishlist_products');
                 F1GEN.Wishlist.activityWishlist();
                 var recentview_promises = [];
-                for(var i = 0; i < 8; i++){
-                    if(typeof last_wishlist_pro_array[i] == 'string'){
-                        var promise = new Promise(function(resolve, reject) {
-                            $.ajax({
-                                url:'/products/' + last_wishlist_pro_array[i] + '?view=wishlist',
-                                async: false,
-                                success: function(product){
-                                    resolve({error: false, data: product});
-                                },
-                                error: function(err){
-                                    if(err.status === 404){
-                                        try{
-                                            var u = ((this.url.split('?'))[0]).replace('/products/', '');
-                                            resolve({error: true, handle: u});
-                                        }catch(e){
-                                            resolve({error: false, data: ''})
-                                        }
-                                    }else{
-                                        resolve({error: false, data: ''});
-                                    }
-                                }
-                            })
-                        });
-                        recentview_promises.push(promise);
-                    }
-                }
-                Promise.all(recentview_promises).then(function(values) {
-                    var x = [];
-                    $.each(values, function(i, v){
-                        if(v.error){
-                            x.push(v.handle);
-                        }else{
-                            $('.sidebarAllMainWishlist .sidebarAllBody').append(v.data);
-                            $('.sidebarAllMainWishlist .sidebarAllBody').show();
-                        }
-                    });
-                    if(x.length > 0){
-                        var new_last_viewed_pro_array = [];
-                        $.each(last_wishlist_pro_array, function(i, v){
-                            if($.inArray(v, x) === -1){
-                                new_last_viewed_pro_array.push(v);
-                            }
-                        })
-                        if(new_last_viewed_pro_array.length > 0){
-                            CookiesTop.set('last_viewed_products', new_last_viewed_pro_array, { expires: 180 });
-                        }
-                    }
-                });
+
+                // for(var i = 0; i < 8; i++){
+                //     if(typeof last_wishlist_pro_array[i] == 'string'){
+                //         var promise = new Promise(function(resolve, reject) {
+                //             $.ajax({
+                //                 url:'/products/' + last_wishlist_pro_array[i] + '?view=wishlist',
+                //                 async: false,
+                //                 success: function(product){
+                //                     resolve({error: false, data: product});
+                //                 },
+                //                 error: function(err){
+                //                     if(err.status === 404){
+                //                         try{
+                //                             var u = ((this.url.split('?'))[0]).replace('/products/', '');
+                //                             resolve({error: true, handle: u});
+                //                         }catch(e){
+                //                             resolve({error: false, data: ''})
+                //                         }
+                //                     }else{
+                //                         resolve({error: false, data: ''});
+                //                     }
+                //                 }
+                //             })
+                //         });
+                //         recentview_promises.push(promise);
+                //     }
+                // }
+                // Promise.all(recentview_promises).then(function(values) {
+                //     var x = [];
+                //     $.each(values, function(i, v){
+                //         if(v.error){
+                //             x.push(v.handle);
+                //         }else{
+                //             $('.sidebarAllMainWishlist .sidebarAllBody').append(v.data);
+                //             $('.sidebarAllMainWishlist .sidebarAllBody').show();
+                //         }
+                //     });
+                //     if(x.length > 0){
+                //         var new_last_viewed_pro_array = [];
+                //         $.each(last_wishlist_pro_array, function(i, v){
+                //             if($.inArray(v, x) === -1){
+                //                 new_last_viewed_pro_array.push(v);
+                //             }
+                //         })
+                //         if(new_last_viewed_pro_array.length > 0){
+                //             CookiesTop.set('last_viewed_products', new_last_viewed_pro_array, { expires: 180 });
+                //         }
+                //     }
+                // });
             }else{
                 $('.sidebarAllMainWishlist .sidebarAllBody').hide();
             }
@@ -524,7 +567,7 @@ F1GEN.Wishlist = {
     activityWishlist: function(){
         var last_wishlist_pro_array = CookiesTop.getJSON('last_wishlist_products');
         $.each(last_wishlist_pro_array, function(i, v){
-            $('.setWishlist[data-handle="' + v + '"] i').removeClass('lni-heart').addClass('lni-heart-filled');
+            $('.setWishlist[data-product_id="' + v + '"] i').removeClass('lni-heart').addClass('lni-heart-filled');
         })
         setTimeout(function(){
             $('.sidebarAllMainWishlistCount').html($('.itemMainWishlist').length)
@@ -2006,7 +2049,7 @@ F1GEN.Quickview = {
                             F1GEN.Sidebar.getCartSidebar();
                             setTimeout(function(){
                                 $('a[data-type="sidebarAllMainCart"]').trigger('click');
-                                $( document.body ).trigger( 'added_to_cart', [ data.fragments, data.cart_hash ] );
+                                // $( document.body ).trigger( 'added_to_cart', [ data.fragments, data.cart_hash ] );
                             },1000)
                         }
                     },

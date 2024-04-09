@@ -24,41 +24,16 @@ function woocommerce_ajax_add_to_cart() {
     $quantity = empty($_POST['quantity']) ? 1 : wc_stock_amount($_POST['quantity']);
     $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
     $product_status    = get_post_status($product_id);
-    $product           = wc_get_product( $product_id );
     $variation_id      = 0;
-    $variation         = array();
+    $data_cart = WC()->cart->add_to_cart($product_id, $quantity, $variation_id);
 
-    if( $product->is_type('variable') ){
-        $variation    = $product->get_variation_attributes();
-        foreach($product->get_available_variations() as $variation_values ){
-            foreach($variation_values['attributes'] as $key => $attribute_value ){
-                $attribute_name = str_replace( 'attribute_', '', $key );
-                $default_value = $product->get_variation_default_attribute($attribute_name);
-                if( $default_value == $attribute_value ){
-                    $is_default_variation = true;
-                } else {
-                    $is_default_variation = false;
-                    break; // Stop this loop to start next main lopp
-                }
-            }
-            if( $is_default_variation ){
-                $variation_id = $variation_values['variation_id'];
-                break; // Stop the main loop
-            }
-        }
-    }
-    if($variation_id > 0){
-        $data_cart = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation);
-    }else{
-        $data_cart = WC()->cart->add_to_cart($product_id, $quantity, $variation_id);
-    }
     if ($passed_validation && $data_cart  && 'publish' === $product_status) {
         do_action('woocommerce_ajax_added_to_cart', $product_id);
         if ('yes' === get_option('woocommerce_cart_redirect_after_add')) {
             wc_add_to_cart_message(array($product_id => $quantity), true);
         }
 
-//        WC_AJAX :: get_refreshed_fragments();
+        WC_AJAX :: get_refreshed_fragments();
     } else {
 
         $data = array(
@@ -151,4 +126,30 @@ function update_cart_quantity() {
     $cart = WC()->cart;
     echo json_encode($cart->total);
     wp_die();
+}
+function setDefaultVariation($product) {
+    if( $product->is_type('variable') ){
+        $variation    = $product->get_variation_attributes();
+        $variation_id = 0;
+        foreach($product->get_available_variations() as $variation_values ){
+            foreach($variation_values['attributes'] as $key => $attribute_value ){
+                $attribute_name = str_replace( 'attribute_', '', $key );
+                $default_value = $product->get_variation_default_attribute($attribute_name);
+                if( $default_value == $attribute_value ){
+                    if($variation_values['is_in_stock']){
+                        $is_default_variation = true;
+                        return  $variation_values['variation_id'];
+                    }else{
+                        $is_default_variation = false;
+                    }
+                } else {
+                    $is_default_variation = false;
+                }
+                if(!$is_default_variation && $variation_values['is_in_stock'] ){
+                    $variation_id = $variation_values['variation_id'];
+                }
+            }
+        }
+        return $variation_id;
+    }
 }

@@ -32,8 +32,7 @@ if (!empty($term_query->terms)) {
                 ),
             ));
             $i = 0;
-            foreach($top_products as $key => $product) {
-        ?>
+            foreach($top_products as $key => $product) {?>
             <?php if ( !wp_is_mobile() ){ ?>
             <div class="grid-item-<?php echo $key++ ?>">
                 <div class="proLoop" >
@@ -58,15 +57,23 @@ if (!empty($term_query->terms)) {
                                 </a>
                             </div>
                             <div class="productAction" >
-                                <a href="javascript:void:0" class="setQuickview" data-product_id="<?php echo $product->id ?>" >
-                                    <i class="lni lni-search-alt"></i>
-                                </a>
-                                <a href="" data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>">
-                                    <i class="lni lni-shopping-basket"></i>
-                                </a>
-
-                                <a href="" class="setWishlist" data-product_id="<?php echo $product->id ?>" data-nonce="<?php echo wp_create_nonce('add_to_wishlist'); ?>">
-                                    <i class="lni lni-heart"></i></a>
+                                    <a href="javascript:void:0" class="setQuickview" data-product_id="<?php echo $product->id ?>" >
+                                        <i class="lni lni-search-alt"></i>
+                                    </a>
+                                <?php   if ($product->is_type('variable')) : ?>
+                                    <a href="" data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo setDefaultVariation($product) ?>">
+                                        <i class="lni lni-shopping-basket"></i>
+                                    </a>
+                                    <a href="" class="setWishlist" data-product_id="<?php echo setDefaultVariation($product) ?>" data-nonce="<?php echo wp_create_nonce('add_to_wishlist'); ?>">
+                                        <i class="lni lni-heart"></i>
+                                    </a>
+                                <?php else:?>
+                                    <a href="" data-quantity="1" class="setAddCartLoop" data-product_id="<?php echo $product->id ?>">
+                                        <i class="lni lni-shopping-basket"></i>
+                                    </a>
+                                    <a href="" class="setWishlist" data-product_id="<?php echo $product->id ?>" data-nonce="<?php echo wp_create_nonce('add_to_wishlist'); ?>">
+                                        <i class="lni lni-heart"></i></a>
+                                <?php endif;?>
                             </div>
                         </div>
                         <div class="productDetail" >

@@ -3,27 +3,6 @@
 add_action('wp_ajax_add_item_to_wishlist', 'add_item_to_wishlist');
 add_action('wp_ajax_nopriv_add_item_to_wishlist', 'add_item_to_wishlist');
     function add_item_to_wishlist() {
-//        $atts = shortcode_atts(
-//            array(
-//                'per_page'        => 5,
-//                'current_page'    => 1,
-//                'pagination'      => 'no',
-//                'wishlist_id'     => get_query_var( 'wishlist_id', false ),
-//                'action_params'   => get_query_var( YITH_WCWL()->wishlist_param, false ),
-//                'no_interactions' => 'no',
-//                'layout'          => '',
-//            ),
-//            $atts
-//        );
-//        $wishlist = YITH_WCWL_Wishlist_Factory::get_current_wishlist( $atts );
-//        $wishlist_items = $wishlist->get_items();
-//        foreach ( $wishlist_items as $item ) {
-////            $product = $item->get_product();
-////            $get_title = $product->get_title();
-////            var_dump($get_title);die;
-//        }
-//
-//        var_dump(count($wishlist_items));die;
         if ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['nonce'] ) ), 'add_to_wishlist' ) ) {
             wp_send_json( array( 'result' => false ) );
         }
@@ -50,6 +29,35 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' 
 
     add_action( 'wp_ajax_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
     add_action( 'wp_ajax_nopriv_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
+}
+
+if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_show_wishlist' ) ) {
+    function yith_wcwl_ajax_show_wishlist() {
+        $wishlist = YITH_WCWL_Wishlist_Factory::get_current_wishlist();
+        if($wishlist){
+            $wishlist_items = $wishlist->get_items();
+            foreach ( $wishlist_items as $item ) {
+                $product = $item->get_product();
+                $response[] = array(
+                    'variation_name' => wc_get_formatted_variation( $product, true, false, false ),
+                    'product_name' => $product->get_title(),
+                    'product_id' => $item['product_id'] ?? 0,
+                    'product_img' => wp_get_attachment_image_url ( $product->get_image_id(), 'medium' ),
+                    'price' => $product->get_price_html(),
+                    'stock_quantity' => $product->get_stock_quantity(),
+                );
+            }
+        }
+        foreach ($response as $res){
+            get_template_part('template-parts/modal/sidebar-show-wishlist', null,array(
+                'response'          => $res
+            ));
+        }
+        wp_die();
+    }
+
+    add_action( 'wp_ajax_yith_wcwl_ajax_show_wishlist', 'yith_wcwl_ajax_show_wishlist' );
+    add_action( 'wp_ajax_nopriv_yith_wcwl_ajax_show_wishlist', 'yith_wcwl_ajax_show_wishlist' );
 }
 
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_enqueue_custom_script' ) ) {

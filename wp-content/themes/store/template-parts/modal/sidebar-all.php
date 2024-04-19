@@ -11,10 +11,10 @@
                 <span>Tổng cộng: </span>
                 <span id="total_price_cart"></span>
             </div>
-            <a href="/cart" class="mainCartButton continue">
+            <a href="#" class="mainCartButton continue">
                 XEM GIỎ HÀNG
             </a>
-            <a href="/checkout" class="mainCartButton">
+            <a href="#" class="mainCartButton">
                 THANH TOÁN
             </a>
         </div>

@@ -4495,3 +4495,9 @@ img.mfp-img {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
+.price-search{
+    display: flex;
+}
+.price-search bdi {
+    display: flex;
+}

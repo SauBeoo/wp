@@ -19,6 +19,24 @@ add_action('wp_ajax_nopriv_add_item_to_wishlist', 'add_item_to_wishlist');
         }
     }
 
+    add_action('wp_ajax_remove_item_to_wishlist', 'remove_item_to_wishlist');
+    add_action('wp_ajax_nopriv_remove_item_to_wishlist', 'remove_item_to_wishlist');
+    function remove_item_to_wishlist() {
+        if ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['nonce'] ) ), 'remove_from_wishlist' ) ) {
+            wp_send_json( array( 'fragments' => array() ) );
+        }
+        try {
+            YITH_WCWL()->remove();
+            return true;
+        } catch ( YITH_WCWL_Exception $e ) {
+            $return = $e->getTextualCode();
+            $message = apply_filters( 'yith_wcwl_error_adding_to_wishlist_message', $e->getMessage() );
+        } catch ( Exception $e ) {
+            $return  = 'error';
+            $message = apply_filters( 'yith_wcwl_error_adding_to_wishlist_message', $e->getMessage() );
+        }
+    }
+
 
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' ) ) {
     function yith_wcwl_ajax_update_count() {
@@ -45,14 +63,17 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_show_wishlist'
                     'product_img' => wp_get_attachment_image_url ( $product->get_image_id(), 'medium' ),
                     'price' => $product->get_price_html(),
                     'stock_quantity' => $product->get_stock_quantity(),
+                    'link_product' => esc_url( get_permalink( $item['product_id'] )),
+                    'nonce' =>  wp_create_nonce('remove_from_wishlist'),
                 );
             }
         }
-        foreach ($response as $res){
-            get_template_part('template-parts/modal/sidebar-show-wishlist', null,array(
-                'response'          => $res
-            ));
-        }
+//        foreach ($response as $res){
+//            get_template_part('template-parts/modal/sidebar-show-wishlist', null,array(
+//                'response'          => $res
+//            ));
+//        }
+        wp_send_json($response);
         wp_die();
     }
 

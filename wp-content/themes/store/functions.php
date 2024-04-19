@@ -13,6 +13,7 @@ define('INC', THEME_URL. "/inc");
 require_once( CORE. "/init.php");
 require_once( INC. "/cart.php");
 require_once( INC. "/wishlist.php");
+require_once( INC. "/search.php");
 
 /**
  * @ thiet lap chieu rong noi dung

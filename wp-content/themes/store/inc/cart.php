@@ -59,6 +59,11 @@ function fetch_cart_items() {
         $product = $cart_item['data'];
         $response['total'] =  WC()->cart->get_cart_contents_count();
         $response['total_price'] = WC()->cart->get_cart_total();
+        if($cart_item['variation_id']){
+            $link_product = esc_url( get_permalink( $cart_item['variation_id'] ));
+        }else{
+            $link_product = esc_url( get_permalink( $product->id ));
+        }
         // Customize the response as needed
         $response['items'][] = array(
             'product_name' => $product->get_title(),
@@ -70,6 +75,7 @@ function fetch_cart_items() {
             'subtotal' => WC()->cart->get_product_subtotal($product, $cart_item['quantity']),
             'price' => $product->get_price_html(),
             'stock_quantity' => $product->get_stock_quantity(),
+            'link_product' => $link_product,
         );
     }
 
@@ -129,7 +135,6 @@ function update_cart_quantity() {
 }
 function setDefaultVariation($product) {
     if( $product->is_type('variable') ){
-        $variation    = $product->get_variation_attributes();
         $variation_id = 0;
         foreach($product->get_available_variations() as $variation_values ){
             foreach($variation_values['attributes'] as $key => $attribute_value ){
@@ -137,7 +142,6 @@ function setDefaultVariation($product) {
                 $default_value = $product->get_variation_default_attribute($attribute_name);
                 if( $default_value == $attribute_value ){
                     if($variation_values['is_in_stock']){
-                        $is_default_variation = true;
                         return  $variation_values['variation_id'];
                     }else{
                         $is_default_variation = false;

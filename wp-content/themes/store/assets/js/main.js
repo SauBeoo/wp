@@ -1,4 +1,5 @@
 var F1GEN = {};
+var timeout = null;
 F1GEN.Global = {
     init: function(){
         this.headerScroll();
@@ -253,9 +254,9 @@ F1GEN.Sidebar = {
                 $.each(res.items, function(index, value){
                     item += `
                         <div class="itemMain" data-cart_item_key="${value.cart_item_key}">
-                        <a href="#"><img class="itemImage img-fluid" src="${value.product_img}"/></a>
+                        <a href="${value.link_product}"><img class="itemImage img-fluid" src="${value.product_img}"/></a>
                             <div class="itemInfo">
-                                <a class="itemTitle" href="#">${value.product_name}</a>
+                                <a class="itemTitle" href="${value.link_product}">${value.product_name}</a>
                                 <div class="itemVariant" >Size:<span style="text-transform: uppercase;">${value.variation_name}</span></div>
                                 <div class="itemPriceInfo">
                                     <span class="itemPriceMain">${value.price}</span>
@@ -267,7 +268,7 @@ F1GEN.Sidebar = {
                                         <input type="number" id="itemQuantityCart" name="quantity" value="${value.quantity}" min="1"  data-stock_quantity="${value.stock_quantity}" class="quantitySelector">
                                         <button class="qtyBtn plusQuan" data-type="plus" >+</button>
                                     </div>
-                                    <div class="removeItem">
+                                    <div class="removeItem removeItemCart">
                                     <i class="lni lni-trash"></i>
                                     </div>
                                 </div>
@@ -286,6 +287,7 @@ F1GEN.Sidebar = {
     changeQuantitySidebar:function(){
         $('body').on('click', '.sidebarAllMainCart .itemQuantity .qtyBtn', function (e) {
             e.preventDefault();
+            clearTimeout(timeout);
             let type = $(this).data('type');
             if (type == "plus") {
                 let stock_quantity = $(this).prev().data('stock_quantity');
@@ -301,27 +303,29 @@ F1GEN.Sidebar = {
             }
             const cart_item_key = $(this).parents('.itemMain').attr('data-cart_item_key');
             const quanItem = $(this).parent().find('#itemQuantityCart').val();
-            $.ajax({
-                type: 'POST',
-                async:false,
-                url: wc_add_to_cart_params.ajax_url,
-                data: {
-                    cart_item_key: cart_item_key,
-                    quantity: quanItem,
-                    action: 'update_cart_quantity'
-                },
-                dataType: 'json',
-                success: function (cart) {
-                    F1GEN.Sidebar.getCartSidebar();
-                },
-                error: function (XMLHttpRequest, textStatus) {
-                    console.log(XMLHttpRequest, textStatus);
-                }
-            })
+            timeout = setTimeout(function() {
+                $.ajax({
+                    type: 'POST',
+                    async:false,
+                    url: wc_add_to_cart_params.ajax_url,
+                    data: {
+                        cart_item_key: cart_item_key,
+                        quantity: quanItem,
+                        action: 'update_cart_quantity'
+                    },
+                    dataType: 'json',
+                    success: function (cart) {
+                        F1GEN.Sidebar.getCartSidebar();
+                    },
+                    error: function (XMLHttpRequest, textStatus) {
+                        console.log(XMLHttpRequest, textStatus);
+                    }
+                })
+            }, 1000);
         })
     },
     deleteItemSidebar:function(){
-        $('body').on('click','.removeItem',function(e){
+        $('body').on('click','.removeItemCart',function(e){
             e.preventDefault();
             const cart_item_key = $(this).parents('.itemMain').attr('data-cart_item_key');
             $(this).parents('.itemMain').remove()
@@ -348,23 +352,40 @@ F1GEN.Sidebar = {
         $('body').on('keyup', '#headerSearchInput', function(e){
             e.preventDefault();
             if(e.which !== 40 && e.which !== 38){
-                var s = $(this).val();
-                if(	typeof s === 'string' && s.length>0 ){
-                    $.getJSON('/search?type=product&view=smart&q='+encodeURIComponent(s), function(res){
-                        if(res.length > 0){
-                            var item = '';
-                            $.each(res, function(index, value){
-                                item += '<a href="'+
-                                    value.url+'"><img src="'+
-                                    value.thumbnail+'" class="img-responsive"><span>'+
-                                    value.title+'<span>'+
-                                    value.price+'</span></span></a>';
-                            });
-                            $('#headerSmartSearch .headerSmartSearchResult').html(item).show();
-                        }else{
-                            $('#headerSmartSearch .headerSmartSearchResult').hide();
-                        }
-                    });
+                var search_val = $(this).val();
+                clearTimeout(timeout);
+                if(	typeof search_val === 'string' && search_val.length>0 ){
+                    timeout = setTimeout(function() {
+                        $.ajax({
+                            type: 'POST',
+                            async:false,
+                            url: wc_add_to_cart_params.ajax_url,
+                            data: {
+                                query: search_val,
+                                maxResults: 10,
+                                action: 'wp_search_product'
+                            },
+                            dataType: 'json',
+                            success: function(cart) {
+                                if(cart.length > 0){
+                                    var item = '';
+                                    $.each(cart, function(index, value){
+                                        item += '<a href="'+
+                                            value.url+'"><img src="'+ value.thumbnail+'" class="img-responsive">' +
+                                            '<p>'+ value.title +
+                                            '<span class="price-search">'+ value.price+'</span>'
+                                            + '</p>' + '</a>';
+                                    });
+                                    $('#headerSmartSearch .headerSmartSearchResult').html(item).show();
+                                }else{
+                                    $('#headerSmartSearch .headerSmartSearchResult').hide();
+                                }
+                            },
+                            error: function(XMLHttpRequest, textStatus) {
+                                // Haravan.onError(XMLHttpRequest, textStatus);
+                            }
+                        })
+                    }, 1000);
                 }else{
                     $('#headerSmartSearch .headerSmartSearchResult').hide();
 
@@ -455,26 +476,14 @@ F1GEN.Wishlist = {
     setWishlistProductLoop: function(){
         $('body').on('click','.setWishlist',function(e){
             e.preventDefault();
-            var phand = [];
-            var handle = $(this).attr('data-product_id');
-            if(document.cookie.indexOf('last_wishlist_products') !== -1){
-                var las = CookiesTop.getJSON('last_wishlist_products');
-                if($.inArray(handle, las) === -1){
-                    phand = [handle];
-                    for(var i = 0; i < las.length; i++){
-                        phand.push(las[i]);
-                        if(phand.length > 15){
-                            break;
-                        }
-                    }
-                    CookiesTop.set('last_wishlist_products', phand, { expires: 180 });
-                }
+            //check nếu nằm trong mảng thì không ajax nữa
+            const product_id = $(this).attr('data-product_id');
+            const last_wishlist_pro_array = CookiesTop.getJSON('last_wishlist_products');
+            if(last_wishlist_pro_array.includes(Number(product_id))){
+                $('a[data-type="sidebarAllMainWishlist"]').trigger('click');
             }else{
-                phand = [handle];
-                CookiesTop.set('last_wishlist_products', phand, { expires: 180 });
+                F1GEN.Wishlist.addWishlistProduct($(this));
             }
-            // F1GEN.Wishlist.wishlistProduct();
-            F1GEN.Wishlist.addWishlistProduct($(this));
             F1GEN.Wishlist.activityWishlist();
         })
     },
@@ -504,72 +513,52 @@ F1GEN.Wishlist = {
                 action: 'yith_wcwl_ajax_show_wishlist',
                 async:true,
             }, function(res){
-            $('.sidebarAllMainWishlist .sidebarAllBody').html(res);
+            let item = '';
+            let new_last_viewed_pro_array = [];
+
+            $.each(res, function(index, value){
+                new_last_viewed_pro_array.push(value.product_id)
+                item += `
+                    <div class="itemMainWishlist">
+                        <a href="${value.link_product}">
+                            <picture>
+                                <img data-src="${value.product_img}"
+                                     src="${value.product_img}"
+                                     class="itemImage img-fluid ls-is-cached lazyloaded" alt="${value.product_name}">
+                            </picture>
+                        </a>
+                        <div class="itemInfo">
+                            <a class="itemTitle" href="${value.link_product}">${value.product_name}<span style="text-transform: uppercase;"> - ${value.variation_name}</span></a>
+                            <div class="itemPriceInfo">
+                                <span class="itemPriceMain">${value.price}</span>
+                            </div>
+                            <div class="itemAction">
+                                <div class="groupAdd">
+                                    <div class="itemQuantity">
+                                        <button class="qtyBtn minusQuan" data-type="minus">-</button>
+                                        <input type="number" id="itemQuantityWishlist" name="quantity" value="1" min="1"
+                                               class="quantitySelector">
+                                        <button class="qtyBtn plusQuan" data-type="plus">+</button>
+                                    </div>
+                                    <div class="removeItem removeItemWishList" data-product_id="${value.product_id}" data-nonce="${value.nonce}">
+                                        <i class="lni lni-trash"></i>
+                                    </div>
+                                </div>
+                                <div class="itemAdd">
+                                    <a class="itemAddFromWishList" data-product_id="${value.product_id}" >Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        `;
+            });
+            $('.sidebarAllMainWishlist .sidebarAllBody').html(item);
             if(isAdd){
                 $('a[data-type="sidebarAllMainWishlist"]').trigger('click');
             }
+            CookiesTop.set('last_wishlist_products', new_last_viewed_pro_array, { expires: 180 });
+            F1GEN.Wishlist.activityWishlist();
         });
-        if($('.sidebarAllMainWishlist .sidebarAllBody').length > 0){
-            if(document.cookie.indexOf('last_wishlist_products') !== -1){
-                $('.sidebarAllMainWishlist .sidebarAllBody').html('')
-                var last_wishlist_pro_array = CookiesTop.getJSON('last_wishlist_products');
-                F1GEN.Wishlist.activityWishlist();
-                var recentview_promises = [];
-
-                // for(var i = 0; i < 8; i++){
-                //     if(typeof last_wishlist_pro_array[i] == 'string'){
-                //         var promise = new Promise(function(resolve, reject) {
-                //             $.ajax({
-                //                 url:'/products/' + last_wishlist_pro_array[i] + '?view=wishlist',
-                //                 async: false,
-                //                 success: function(product){
-                //                     resolve({error: false, data: product});
-                //                 },
-                //                 error: function(err){
-                //                     if(err.status === 404){
-                //                         try{
-                //                             var u = ((this.url.split('?'))[0]).replace('/products/', '');
-                //                             resolve({error: true, handle: u});
-                //                         }catch(e){
-                //                             resolve({error: false, data: ''})
-                //                         }
-                //                     }else{
-                //                         resolve({error: false, data: ''});
-                //                     }
-                //                 }
-                //             })
-                //         });
-                //         recentview_promises.push(promise);
-                //     }
-                // }
-                // Promise.all(recentview_promises).then(function(values) {
-                //     var x = [];
-                //     $.each(values, function(i, v){
-                //         if(v.error){
-                //             x.push(v.handle);
-                //         }else{
-                //             $('.sidebarAllMainWishlist .sidebarAllBody').append(v.data);
-                //             $('.sidebarAllMainWishlist .sidebarAllBody').show();
-                //         }
-                //     });
-                //     if(x.length > 0){
-                //         var new_last_viewed_pro_array = [];
-                //         $.each(last_wishlist_pro_array, function(i, v){
-                //             if($.inArray(v, x) === -1){
-                //                 new_last_viewed_pro_array.push(v);
-                //             }
-                //         })
-                //         if(new_last_viewed_pro_array.length > 0){
-                //             CookiesTop.set('last_viewed_products', new_last_viewed_pro_array, { expires: 180 });
-                //         }
-                //     }
-                // });
-            }else{
-                $('.sidebarAllMainWishlist .sidebarAllBody').hide();
-            }
-        }else{
-            $('.sidebarAllMainWishlist .sidebarAllBody').hide();
-        }
     },
     activityWishlist: function(){
         var last_wishlist_pro_array = CookiesTop.getJSON('last_wishlist_products');
@@ -595,38 +584,62 @@ F1GEN.Wishlist = {
     addFromWishlist: function(){
         $('body').on('click', '.sidebarAllMainWishlist .itemAddFromWishList', function(e){
             e.preventDefault();
-            let id = $(this).attr('data-id');
+            let product_id = $(this).attr('data-product_id');
             let quantity = $(this).parents('.itemAction').find('#itemQuantityWishlist').val();
-            $.ajax({
-                type: "POST",
-                url: "/cart/add.js",
-                data: {id: id, quantity: quantity},
-                success: function(data){
-                    $('a[data-type="sidebarAllMainCart"]').trigger('click');
-                    F1GEN.Sidebar.getCartSidebar();
-                },
-                error: function(){
-                    $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
-                }
-            })
+            if(product_id){
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    url: wc_add_to_cart_params.ajax_url,
+                    data: {
+                        product_id: product_id,
+                        quantity: quantity,
+                        action: 'woocommerce_ajax_add_to_cart'
+                    },
+                    success: function(data){
+                        if(data.error){
+                            $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                        }else{
+                            F1GEN.Sidebar.getCartSidebar();
+                            setTimeout(function(){
+                                $('a[data-type="sidebarAllMainCart"]').trigger('click');
+                                // $( document.body ).trigger( 'added_to_cart', [ data.fragments, data.cart_hash ] );
+                            },1000)
+                        }
+                    },
+                    error: function(){
+                        $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                    }
+                })
+            }else{
+                $('#alertError').modal('show').find('.modal-body').html('Xin lỗi, vui lòng chọn sản phẩm!');;
+            }
         })
     },
     removeWishlist:function(){
-        $('body').on('click','.itemMainWishlist .removeItem',function(e){
+        $('body').on('click','.removeItemWishList',function(e){
+            console.log(1232);
             e.preventDefault();
-            var phand = [];
-            var handle = $(this).attr('data-handle');
-            $('a[data-handle="' + handle + '"]').find('i').removeClass('lni-heart-filled').addClass('lni-heart');
-            if(document.cookie.indexOf('last_wishlist_products') !== -1){
-                var las = CookiesTop.getJSON('last_wishlist_products');
-                var flagIndex = $.inArray(handle, las);
-                las.splice(flagIndex,1)
-                CookiesTop.set('last_wishlist_products', las, { expires: 180 });
-            }else{
-                phand = [handle];
-                CookiesTop.set('last_wishlist_products', phand, { expires: 180 });
-            }
-            F1GEN.Wishlist.wishlistProduct(3, 5);
+            const product_id = $(this).attr('data-product_id');
+            const nonce =  $(this).attr('data-nonce');
+            $.ajax({
+                type: 'POST',
+                async:true,
+                url: wc_add_to_cart_params.ajax_url,
+                data: {
+                    remove_from_wishlist: product_id,
+                    nonce: nonce,
+                    action: 'remove_item_to_wishlist'
+                },
+                dataType: 'json',
+                success: function(res) {
+                    F1GEN.Wishlist.wishlistProduct();
+                },
+                error: function(XMLHttpRequest, textStatus) {
+                    // Haravan.onError(XMLHttpRequest, textStatus);
+                }
+            })
+
         })
     }
 }
@@ -1798,22 +1811,7 @@ F1GEN.Quickview = {
                 $('.loadingWrapper').addClass('open');
                 $('#quickviewModal').modal('show');
                 $('#quickviewModal .modal-body').css('opacity',0);
-                // let flagHandle = $(this).attr('data-handle');
-                // $('.loadingWrapper').removeClass('open');
-                // $('#quickviewModal .modal-body').css('opacity',1);
                 let product_id = $(this).attr('data-product_id');
-                // self.changeOption();
-                // self.render();
-                // /*F1GEN.Quickview.setAvailableVariants();*/
-                // self.setStatusVariants();
-                // self.checkOptionFirst();
-                // $.ajax({
-                //     url:'/products/' + flagHandle + '.js',
-                //     async: false,
-                //     success: function(data){
-                //         window.F1GEN_vars.quickview = data;
-                //     }
-                // })
                 $.get(wc_add_to_cart_params.ajax_url,{
                     action: 'get_items',
                     product_id: product_id,

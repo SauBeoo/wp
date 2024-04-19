@@ -314,7 +314,6 @@ if ( ! class_exists( 'YITH_WCWL' ) ) {
 			$prod_id     = intval( $atts['remove_from_wishlist'] );
 			$wishlist_id = intval( $atts['wishlist_id'] );
 			$user_id     = intval( $atts['user_id'] );
-
 			/**
 			 * DO_ACTION: yith_wcwl_removing_from_wishlist
 			 *
